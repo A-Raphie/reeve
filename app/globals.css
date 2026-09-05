@@ -258,6 +258,11 @@ body {
 .rise-2 { animation-delay: 200ms; }
 .rise-3 { animation-delay: 300ms; }
 
+@keyframes number-pop {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 /* Word-by-word tagline activation (landing B11): muted until .active lands */
 .reveal-word {
   color: rgb(var(--ink-rgb) / 0.28);

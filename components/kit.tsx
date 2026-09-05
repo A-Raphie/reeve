@@ -155,3 +155,48 @@ export function Clause({
     </div>
   );
 }
+
+/* Structured rejection (beui/Clasp grammar): a refusal is the system working,
+   so it renders as a machine-readable card with the cited clause, never as an error. */
+export function RefusalCard({
+  attempt,
+  clause,
+  code,
+  detail,
+}: {
+  attempt: string;
+  clause: string;
+  code: string;
+  detail: string;
+}) {
+  return (
+    <div className="card p-4" style={{ borderColor: "rgb(var(--accent-rgb) / 0.4)" }}>
+      <div className="flex items-center justify-between gap-3">
+        <span className="micro" style={{ color: "var(--status-error)" }}>refused before broadcast</span>
+        <span className="serial">{code}</span>
+      </div>
+      <p className="mt-2 text-sm text-pretty" style={{ color: "var(--text-primary)" }}>{attempt}</p>
+      <div className="mt-3 border-t border-[color:var(--border-default)] pt-3">
+        <div className="micro" style={{ fontSize: "0.625rem" }}>clause that refused it</div>
+        <div className="serial mt-1" style={{ color: "var(--text-primary)" }}>{clause}</div>
+        <div className="caption mt-2 text-pretty">{detail}</div>
+      </div>
+    </div>
+  );
+}
+
+/* Count-up numeral (transitions.dev number-pop grammar): tabular, interruptible
+   via reduced-motion, settles fast (700ms) so it never blocks reading. */
+export function CountUp({ value, className }: { value: number; className?: string }) {
+  return (
+    <span
+      className={className}
+      style={{
+        fontVariantNumeric: "tabular-nums",
+        animation: "number-pop 700ms cubic-bezier(0.32, 0.72, 0, 1) both",
+      }}
+    >
+      {value}
+    </span>
+  );
+}

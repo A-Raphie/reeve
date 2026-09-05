@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { AGENTS, AGENT_LIST, type AgentId } from "@/lib/agents";
 import { readReceipts, writFor } from "@/lib/ledger";
 import { EXPLORER_ADDR, EXPLORER_TX, NETWORK } from "@/lib/chain.mjs";
-import { Clause, LiveDial, ReceiptRow, StatusChip } from "@/components/kit";
+import { Clause, CountUp, LiveDial, ReceiptRow, StatusChip } from "@/components/kit";
 import { WritBuilder } from "@/components/writ-builder";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -114,19 +114,19 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
             <div className="mt-4 grid grid-cols-3 gap-4">
               <div>
                 <div className="text-8xl font-bold tracking-[-0.04em] tabular-nums" style={{ lineHeight: 1 }}>
-                  {actions}
+                  <CountUp value={actions} className="text-8xl font-bold tracking-[-0.04em] tabular-nums" />
                 </div>
                 <div className="micro mt-2">{actions === 1 ? "action taken" : "actions taken"}</div>
               </div>
               <div>
                 <div className="text-8xl font-bold tracking-[-0.04em] tabular-nums" style={{ lineHeight: 1 }}>
-                  {checks}
+                  <CountUp value={checks} className="text-8xl font-bold tracking-[-0.04em] tabular-nums" />
                 </div>
                 <div className="micro mt-2">{checks === 1 ? "round checked" : "rounds checked"}</div>
               </div>
               <div>
                 <div className="text-8xl font-bold tracking-[-0.04em] tabular-nums" style={{ lineHeight: 1 }}>
-                  {refusals}
+                  <CountUp value={refusals} className="text-8xl font-bold tracking-[-0.04em] tabular-nums" />
                 </div>
                 <div className="micro mt-2">{refusals === 1 ? "call refused" : "calls refused"}</div>
               </div>
