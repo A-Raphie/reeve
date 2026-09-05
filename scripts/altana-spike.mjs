@@ -2,7 +2,8 @@
 // Proves: wallet on bnb-testnet, relay faucet, session grant registered on-chain
 // (call allowlist + spend cap + expiry), agent-side execute through the session,
 // instant revoke, 8183 deployment addresses, skills registry reachability.
-import { createClient, BNB_TESTNET, serializeSession, erc8183Addresses } from "@altananetwork/sdk";
+import { createClient, serializeSession, erc8183Addresses } from "@altananetwork/sdk";
+import { NETWORK } from "../lib/chain.mjs";
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { createPublicClient, http, formatEther } from "viem";
 import { pathToFileURL } from "node:url";
@@ -14,8 +15,8 @@ const STATE = ".spike/wallet.json";
 const log = (...a) => console.log(...a);
 
 async function main() {
-  const client = createClient({ chains: [BNB_TESTNET], defaultChainId: BNB_TESTNET.chainId });
-  log(`[1] client up: chain ${BNB_TESTNET.chainId} rpc ${BNB_TESTNET.publicRpcUrl}`);
+  const client = createClient({ chains: [NETWORK], defaultChainId: NETWORK.chainId });
+  log(`[1] client up: chain ${NETWORK.chainId} rpc ${NETWORK.publicRpcUrl}`);
 
   let wallet;
   if (existsSync(STATE)) {
@@ -25,18 +26,18 @@ async function main() {
     wallet = { address: saved.address, signer: signerFromPrivateKey(saved.privateKey) };
     log(`[2] wallet restored: ${wallet.address}`);
   } else {
-    const created = await client.createWallet({ networks: [BNB_TESTNET] });
+    const created = await client.createWallet({ networks: [NETWORK] });
     wallet = { address: created.address, signer: created.signer };
     mkdirSync(".spike", { recursive: true });
     writeFileSync(STATE, JSON.stringify({ address: created.address, privateKey: created.signer._privateKey }, null, 2));
     log(`[2] wallet created: ${wallet.address} (saved to ${STATE}, gitignored)`);
   }
 
-  const publicClient = createPublicClient({ chain: BNB_TESTNET.chain, transport: http(BNB_TESTNET.publicRpcUrl) });
+  const publicClient = createPublicClient({ chain: NETWORK.chain, transport: http(NETWORK.publicRpcUrl) });
   const before = await publicClient.getBalance({ address: wallet.address });
   log(`[3] native balance (info): ${formatEther(before)} tBNB`);
   if (before < 10n ** 15n) {
-    const relay = buildRelayClient(BNB_TESTNET);
+    const relay = buildRelayClient(NETWORK);
     const { transactionHash } = await fundNative(relay, wallet.address, 5n * 10n ** 16n); // 0.05 tBNB
     log(`[3] faucet drip 0.05 tBNB accepted: ${transactionHash} (relay-prepaid gas; native balance may stay 0)`);
   }
@@ -63,7 +64,7 @@ async function main() {
   const exec = await client.execute({
     session: grant,
     calls: [{ to: wallet.address, value: 0n, data: "0x" }],
-    chainId: BNB_TESTNET.chainId,
+    chainId: NETWORK.chainId,
   });
   log(`[5] agent executed through session: ${exec.transactionHash ?? JSON.stringify(exec).slice(0, 120)}`);
 
@@ -71,7 +72,7 @@ async function main() {
   const revoke = await client.revokeSession({ wallet, signer: wallet.signer, session: grant });
   log(`[6] revoked: ${revoke.transactionHash ?? JSON.stringify(revoke).slice(0, 120)}`);
 
-  const a = erc8183Addresses(BNB_TESTNET.chainId);
+  const a = erc8183Addresses(NETWORK.chainId);
   log(`[7] ERC-8183 on ${BNB_TESTNET.chainId}: commerce ${a.commerce} router ${a.router} registry ${a.registry} payToken ${a.paymentToken}`);
 
   for (const url of ["https://raw.githubusercontent.com/altananetwork/skills/main/index.json", "https://skills.altana.network/index.json"]) {

@@ -8,7 +8,7 @@ Reeve is a Next.js marketplace of four live BSC testnet agents. Users sign writs
 - **Writ service (client-side Altana SDK)** · passkey wallet creation, grantSession with CallPermission + SpendPermission + expiry, register: true (Keystore), revokeSession; sessions serialized to the ledger store
 - **Agent runners (GitHub Actions cron, 15m)** · one job per agent; each round: read state (public RPC + feeds) · decide · execute through its session (client.execute with session signer) · append receipt lines · commit ledger JSON to the repo
 - **Execution layer** · Altana certified skills (PancakeSwap Liquidity/Trading, Venus, Aave, Lista) + PCS smart-router for swaps; grid engine is in-repo
-- **Machine surface** · /api/hire (ERC-8183 hireErc8183Agent, settle approve/dispute, claimRefund) · x402 paid data endpoints via x402 server middleware (B402 path per Altana docs)
+- **Machine surface** · /api/hire (ERC-8183 hireErc8183Agent, settle approve/dispute, claimRefund) · x402 paid data endpoints via `@altananetwork/x402-server` (Altana's B402 fork, named in the tracks tab; not upstream x402)
 - **Data** · 8004scan API (identity/reputation, semantic search; Pro tier claimed) · PCS price API + subgraph · Venus/Aave APR feeds · receipt ledger JSON in-repo (GHA-committed)
 
 ## Data model

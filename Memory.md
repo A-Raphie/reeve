@@ -28,5 +28,6 @@ Running log of decisions, conventions, and gotchas. Newest at the top.
 
 ## Things to not forget
 - Flip repo public at submission; keep it private during build
-- Sep 9 12:00 UTC hard stop; winners Nov 5; keep links alive through judging
+- Sep 9 12:00 UTC hard stop; keep links alive through judging (winners date unpublished)
+- Tracks tab (rendered Sep 5): Altana bar says "Testnet counts, mainnet is stronger" explicitly; main-track Weight column is EMPTY (weights unpublished, only TermiX has 30/30/20/20); timeline = Build NOW -> top-3 PUBLIC shortlist -> Phase 2 [REDACTED] with "more criterias"; sponsor Ideas-to-Build table names our exact build (agent hiring marketplace via hireErc8183Agent, autonomous DeFi in spend caps, b402 via @altananetwork/x402-server)
 - Footer X credit; claims-verify before submission; notify-gate before any form submit (he clicks)

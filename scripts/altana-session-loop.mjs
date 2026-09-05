@@ -1,10 +1,11 @@
 // Full session loop on a clean (nonce-unspent) wallet: grant registered session -> agent execute -> revoke.
-import { createClient, signerFromPrivateKey, createPrivateKeySigner, BNB_TESTNET, serializeSession } from "@altananetwork/sdk";
+import { createClient, signerFromPrivateKey, createPrivateKeySigner, serializeSession } from "@altananetwork/sdk";
+import { NETWORK } from "../lib/chain.mjs";
 import { readFileSync } from "node:fs";
 
 const agents = JSON.parse(readFileSync(".spike/agents.json", "utf8"));
 const w = agents[process.argv[2] ?? "yield"];
-const client = createClient({ chains: [BNB_TESTNET], defaultChainId: BNB_TESTNET.chainId });
+const client = createClient({ chains: [NETWORK], defaultChainId: NETWORK.chainId });
 const wallet = { address: w.address, signer: signerFromPrivateKey(w.privateKey) };
 
 // The offer sheet: allow one target, cap native spend at 0.0002 tBNB/day, live 1 hour, registered on-chain.

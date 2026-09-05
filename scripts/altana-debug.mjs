@@ -1,5 +1,6 @@
 // Debug ladder: (a) admin execute trivial call, (b) grantSession with explicit sessionSigner, (c) session execute.
-import { createClient, createPrivateKeySigner, signerFromPrivateKey, BNB_TESTNET, serializeSession } from "@altananetwork/sdk";
+import { createClient, createPrivateKeySigner, signerFromPrivateKey, serializeSession } from "@altananetwork/sdk";
+import { NETWORK } from "../lib/chain.mjs";
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const STATE = ".spike/wallet.json";
@@ -7,7 +8,7 @@ const SESSION_STATE = ".spike/session.json";
 const log = (...a) => console.log(...a);
 
 async function main() {
-  const client = createClient({ chains: [BNB_TESTNET], defaultChainId: BNB_TESTNET.chainId });
+  const client = createClient({ chains: [NETWORK], defaultChainId: NETWORK.chainId });
   const saved = JSON.parse(readFileSync(STATE, "utf8"));
   const wallet = { address: saved.address, signer: signerFromPrivateKey(saved.privateKey) };
   log(`wallet ${wallet.address}`);
