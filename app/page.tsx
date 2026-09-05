@@ -1,7 +1,7 @@
 import { CHAIN_LABEL, EXPLORER } from "@/lib/chain.mjs";
 import { liveWrit, readReceipts } from "@/lib/ledger";
 import { Clause, LiveDial, StatusChip } from "@/components/kit";
-import { ScrollReveal, TaglineReveal } from "@/components/reveal";
+import { TaglineReveal } from "@/components/reveal";
 import Link from "next/link";
 
 const CATEGORIES = [
@@ -239,19 +239,53 @@ export default function Landing() {
           </div>
         </section>
 
+        {/* Built-on strip: the real stack (what-it-works-with) */}
+        <section className="border-t border-[color:var(--border-default)] py-10">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <span className="micro">Built on</span>
+            {["Altana session keys", "PancakeSwap", "Venus", "Aave", "Lista", "ERC-8183 escrow", "8004scan"].map((t) => (
+              <span key={t} className="serial" style={{ color: "var(--text-secondary)" }}>
+                {t}
+              </span>
+            ))}
+          </div>
+        </section>
+
         {/* 01 / Problem frame: numbers first */}
         <section className="border-t border-[color:var(--border-default)] py-20">
           <SectionHeader num="01" label="Why this exists" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((s) => (
-              <ScrollReveal key={s.label}>
+              <div>
                 <div className="card card-hover h-full p-6">
                   <div className="text-5xl font-bold tabular-nums" style={{ lineHeight: 1, letterSpacing: "-0.04em" }}>{s.n}</div>
                   <div className="mt-4 text-sm font-semibold text-pretty" style={{ color: "var(--text-primary)" }}>{s.label}</div>
                   <p className="caption mt-2 text-pretty">{s.detail}</p>
                 </div>
-              </ScrollReveal>
+              </div>
             ))}
+          </div>
+          <div className="mt-12 grid gap-8 md:grid-cols-[1fr_1.4fr]">
+            <h3 className="text-3xl font-bold tracking-tight text-balance">
+              Off-chain agents create on-chain trust problems.
+            </h3>
+            <div className="space-y-4 text-pretty" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm leading-6">
+                The trading happens somewhere you cannot see. An agent somewhere
+                holds a key to a position, its decisions land in a private
+                dashboard, and the evidence of good behavior is a screenshot.
+              </p>
+              <p className="text-sm leading-6">
+                So hiring falls back on hope. People prepay unknown wallets and
+                pray. When the agent drifts, the argument happens in DMs, and
+                whoever holds the money wins.
+              </p>
+              <p className="text-sm leading-6" style={{ color: "var(--text-primary)" }}>
+                Reeve moves the boundary onchain. The writ, the limits, the
+                actions, and the refusals are all public and hash-committed, and
+                the Keystore enforces the outcome.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -269,15 +303,18 @@ export default function Landing() {
           <SectionHeader num="03" label="How a hire works" />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {STEPS.map((s) => (
-              <ScrollReveal key={s.n}>
+              <div>
                 <div className="card card-hover h-full p-6">
                   <span style={{ color: "var(--accent-press)" }}>◆</span>
                   <span className="serial ml-2" style={{ color: "var(--text-muted)" }}>{s.n}</span>
                   <h3 className="mt-3 text-xl font-semibold tracking-tight">{s.title}</h3>
                   <p className="caption mt-3 text-pretty">{s.body}</p>
                 </div>
-              </ScrollReveal>
+              </div>
             ))}
+          </div>
+          <div className="serial mt-12 overflow-x-auto whitespace-nowrap" style={{ color: "var(--text-secondary)" }}>
+            you sign the writ → the agent checks every 15 min → actions fire inside your limits → receipts commit to the repo → revoke any time
           </div>
           <p className="micro mt-12">For machines · agents hire agents through escrow</p>
           <div className="code-block mt-3">
@@ -293,10 +330,10 @@ export default function Landing() {
           <SectionHeader num="04" label="Why a writ beats a promise" />
           <div className="mt-10 grid gap-x-6 gap-y-10 md:grid-cols-2">
             {BENEFITS.map((b) => (
-              <ScrollReveal key={b.title}>
+              <div>
                 <h3 className="text-lg font-semibold tracking-tight">{b.title}</h3>
                 <p className="caption mt-2 text-pretty">{b.body}</p>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
         </section>
@@ -372,7 +409,7 @@ export default function Landing() {
             contracts check every call against these rules before it executes.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <ScrollReveal>
+            <div>
               <div className="card h-full p-6">
                 <span className="micro" style={{ color: "var(--status-success)" }}>✓ · A signed writ lets an agent</span>
                 <ul className="mt-4 space-y-3">
@@ -388,8 +425,8 @@ export default function Landing() {
                   ))}
                 </ul>
               </div>
-            </ScrollReveal>
-            <ScrollReveal>
+            </div>
+            <div>
               <div className="card h-full p-6">
                 <span className="micro" style={{ color: "var(--status-error)" }}>✗ · No writ ever lets an agent</span>
                 <ul className="mt-4 space-y-3">
@@ -405,7 +442,7 @@ export default function Landing() {
                   ))}
                 </ul>
               </div>
-            </ScrollReveal>
+            </div>
           </div>
         </section>
 
