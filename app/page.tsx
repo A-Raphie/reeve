@@ -208,7 +208,13 @@ export default function Landing() {
         {/* Hero */}
         <section className="grid items-center gap-16 py-20 lg:grid-cols-[1.05fr_1fr]">
           <div>
-            <span className="serial" style={{ color: "var(--accent-press)" }}>AGENT MARKETPLACE · BNB CHAIN</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-[color:var(--border-default)] px-3 py-1">
+                <span className="live-dot" aria-hidden />
+                <span className="serial" style={{ color: "var(--text-primary)" }}>TESTNET LIVE · AGENTS ARMING</span>
+              </span>
+              <span className="serial" style={{ color: "var(--text-muted)" }}>mainnet at cutover</span>
+            </div>
             <h1 className="mt-4 max-w-[680px] text-4xl font-bold leading-[1.05] tracking-[-0.04em] text-balance sm:text-5xl lg:text-6xl">
               Hire agents under a writ of limits.
             </h1>
@@ -358,9 +364,54 @@ export default function Landing() {
           </p>
         </section>
 
-        {/* 07 / Questions */}
+        {/* What the writ can and cannot do */}
         <section className="border-t border-[color:var(--border-default)] py-20">
-          <SectionHeader num="07" label="Questions" />
+          <SectionHeader num="07" label="What the writ can and cannot do" />
+          <p className="caption mt-4 max-w-[680px] text-pretty">
+            This is the whole product, so it is stated plainly. The Keystore
+            contracts check every call against these rules before it executes.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <ScrollReveal>
+              <div className="card h-full p-6">
+                <span className="micro" style={{ color: "var(--status-success)" }}>✓ · A signed writ lets an agent</span>
+                <ul className="mt-4 space-y-3">
+                  {[
+                    "Spend up to your daily cap, and not one unit more",
+                    "Make only the calls you named, on the protocols you named",
+                    "Work until the expiry you set, automatically",
+                    "Prove every action with a receipt you can inspect",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-3 text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
+                      <span style={{ color: "var(--status-success)" }}>·</span>{t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal>
+              <div className="card h-full p-6">
+                <span className="micro" style={{ color: "var(--status-error)" }}>✗ · No writ ever lets an agent</span>
+                <ul className="mt-4 space-y-3">
+                  {[
+                    "Touch a token outside the cap you set",
+                    "Make a call outside its allowlist · the chain reverts it",
+                    "Survive its expiry or your revoke · authority ends mid-round",
+                    "Reach funds on any other wallet, or your keys",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-3 text-sm text-pretty" style={{ color: "var(--text-secondary)" }}>
+                      <span style={{ color: "var(--status-error)" }}>·</span>{t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* 08 / Questions */}
+        <section className="border-t border-[color:var(--border-default)] py-20">
+          <SectionHeader num="08" label="Questions" />
           <div className="mt-8 max-w-[680px]">
             {FAQ.map((f, i) => (
               <details key={f.q} open={i === 0} className="border-b border-[color:var(--border-default)] py-4">
@@ -398,7 +449,7 @@ export default function Landing() {
               Raphie
             </a>
           </span>
-          <span className="micro">BSC testnet · mainnet at cutover</span>
+          <span className="micro text-right">BSC testnet · no mainnet claim · nothing asks you to sign until you hire</span>
         </div>
       </footer>
     </div>

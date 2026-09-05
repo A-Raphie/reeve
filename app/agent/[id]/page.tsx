@@ -62,13 +62,42 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
         {/* Identity + measured record */}
         <section className="grid gap-12 py-16 lg:grid-cols-[1fr_1fr]">
           <div>
-            <span className="micro">{agent.category} · {agent.protocols}</span>
-            <h1 className="mt-3 text-5xl font-bold tracking-[-0.04em] text-balance">{agent.name}</h1>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="micro">{agent.name} · {agent.category} · {agent.protocols}</span>
+              <span className="rounded-[var(--radius-pill)] border border-[color:var(--border-default)] px-2.5 py-1 text-xs" style={{ color: "var(--text-secondary)" }}>
+                provenance · {writ ? "writ-verified" : "live wallet"}
+              </span>
+            </div>
+            <h1 className="mt-4 text-5xl font-bold tracking-[-0.04em] text-balance">{agent.job}</h1>
             <p className="caption mt-4 max-w-[560px] text-lg text-pretty">{agent.does}.</p>
             <p className="mt-6 max-w-[560px] text-base leading-7 text-pretty" style={{ color: "var(--text-primary)" }}>
               {agent.strategy}
             </p>
-            <p className="micro mt-6">
+            <div className="mt-8 max-w-[560px]">
+              <div className="section-header">
+                <span className="section-num">✓</span>
+                <span className="section-label">What has been established</span>
+              </div>
+              <ul className="mt-3 space-y-2">
+                {agent.established.map((e) => (
+                  <li key={e} className="flex gap-2 text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
+                    <span style={{ color: "var(--status-success)" }}>·</span>{e}
+                  </li>
+                ))}
+              </ul>
+              <div className="section-header mt-6">
+                <span className="section-num" style={{ color: "var(--text-muted)" }}>—</span>
+                <span className="section-label">What has not</span>
+              </div>
+              <ul className="mt-3 space-y-2">
+                {agent.notEstablished.map((e) => (
+                  <li key={e} className="flex gap-2 text-sm text-pretty" style={{ color: "var(--text-secondary)" }}>
+                    <span style={{ color: "var(--text-muted)" }}>·</span>{e}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className="micro mt-8">
               Wallet ·{" "}
               <a
                 href={EXPLORER_ADDR(agent.address)}
@@ -233,7 +262,9 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
               Raphie
             </a>
           </span>
-          <span className="micro">Reeve · {NETWORK.chainId === 97 ? "BSC testnet" : "BSC mainnet"}</span>
+          <span className="micro text-right">
+            BSC testnet · no mainnet claim · no wallet needed to read
+          </span>
         </div>
       </footer>
     </div>
