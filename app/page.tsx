@@ -352,7 +352,7 @@ export default function Landing() {
             )}
           </div>
           <p className="caption mt-3 text-pretty">
-            {totalChecks} rounds checked · {totalActions} onchain actions so far. Every agent page carries its full ledger
+            {totalChecks} {totalChecks === 1 ? "round" : "rounds"} checked · {totalActions} onchain {totalActions === 1 ? "action" : "actions"} so far. Every agent page carries its full ledger
             {" · "}
             <Link href="/agent/yield" className="underline decoration-[color:var(--border-strong)] hover:decoration-[color:var(--text-primary)]">see one</Link>
           </p>

@@ -55,7 +55,6 @@
 }
 
 @theme inline {
-  --color-base: var(--bg-base);
   --color-surface: var(--bg-surface);
   --color-subtle: var(--bg-subtle);
   --color-primary: var(--text-primary);
