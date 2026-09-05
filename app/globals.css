@@ -140,6 +140,77 @@ body {
   color: var(--text-secondary);
 }
 
+/* Card hover depth (winsznx feature cards): border transitions to accent */
+.card-hover {
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.card-hover:hover { border-color: rgb(var(--accent-rgb) / 0.55); }
+
+/* Mono status strip: the live readout under the header (winsznx signature) */
+.status-strip {
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-subtle);
+}
+.status-strip-inner {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.status-strip-inner strong { color: var(--text-primary); font-weight: 600; }
+.live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--status-success);
+  margin-right: 6px;
+}
+
+/* Code block (code as hero): real API shapes, machine voice */
+.code-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  padding: 1rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  overflow-x: auto;
+  white-space: pre;
+}
+.code-block .c-accent { color: var(--agent); }
+.code-block .c-dim { color: var(--text-muted); }
+
+/* Numbered section headers (winsznx signature): 01 / LABEL */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-press);
+  letter-spacing: 0.05em;
+}
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
 /* Buttons: 44px targets (Fitts); gold = principal action only */
 .btn {
   display: inline-flex;
