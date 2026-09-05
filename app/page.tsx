@@ -362,13 +362,18 @@ export default function Landing() {
         <section className="border-t border-[color:var(--border-default)] py-20">
           <SectionHeader num="07" label="Questions" />
           <div className="mt-8 max-w-[680px]">
-            {FAQ.map((f) => (
-              <details key={f.q} className="border-b border-[color:var(--border-default)] py-4">
-                <summary className="cursor-pointer list-none text-base font-semibold tracking-tight marker:hidden">
-                  <span className="serial mr-3" style={{ color: "var(--text-muted)" }}>+</span>
-                  {f.q}
+            {FAQ.map((f, i) => (
+              <details key={f.q} open={i === 0} className="border-b border-[color:var(--border-default)] py-4">
+                <summary className="group flex cursor-pointer list-none items-start gap-3 text-base font-semibold tracking-tight marker:hidden">
+                  <span
+                    className="serial mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center transition-transform duration-200 group-hover:scale-110 [[open]>&]:rotate-45"
+                    style={{ color: "var(--accent-press)" }}
+                  >
+                    +
+                  </span>
+                  <span>{f.q}</span>
                 </summary>
-                <p className="caption mt-3 pl-7 text-pretty">{f.a}</p>
+                <p className="caption mt-3 pl-8 text-pretty">{f.a}</p>
               </details>
             ))}
           </div>
