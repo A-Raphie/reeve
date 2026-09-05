@@ -16,12 +16,14 @@ Running log of decisions, conventions, and gotchas. Newest at the top.
 - Agent scripts live in scripts/, ledger JSON in ledger/
 
 ## Gotchas
+- **Never send a plain EOA transfer from an Altana wallet**: relay bundles sign the 7702 auth item with the nonce recorded at account creation; a plain transfer desyncs the nonce and every later relay op fails with "invalid auth item nonce, expected N, got 0". Fund wallets only via faucet; use a dedicated dumb EOA (the treasury) to move gas between wallets.
+- Relay bundle gas costs ~0.0004 tBNB (bare execute) to ~0.0015 tBNB (deploy + grant). The bnb faucet pays 0.01 tBNB per claim: about 10-20 agent ops per claim. Relay bundles do NOT consume the account EOA's plain nonce.
+- "quote has asset deficits and is expected to fail" = balance below the bundle cost; top up and retry.
 - Altana SDK signer key field is `_privateKey`, not `privateKey`
 - Altana SDK exports map blocks internal paths: deep-import via direct file URL from node_modules
 - The SDK relay faucet (fundNative) is a stub on bnb-testnet: mint-to-0x0 tx, no usable credit. Fund from the public faucet https://testnet.bnbchain.org/faucet-smart (login-gated, his step)
 - $U for 8183 budgets: faucet contract 0x86e9197CC0F76E4e4aaa7082180945196bBAb5D3 requestTokens() pays 10 $U per address per 30 min (needs gas first)
 - Testnet addresses source of truth: docs.altana.network/concepts/networks/testnet (Keystore 0x6b8361C29d05D498b1a12B54A37310f94171E94A, KeyStoreController 0xb530D1971f5453F3359518343F05D0AedFfF7e12, $U 0xc70B8741B8B07A6d61E54fd4B20f22Fa648E5565)
-- wallet_prepareCalls reverts with opaque `0x` when the account holds no gas: the error is not session-related
 - npm arborist crash `Cannot read properties of null (reading 'edgesOut')`: use --legacy-peer-deps
 
 ## Things to not forget
