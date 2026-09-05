@@ -125,8 +125,15 @@ function WritPanel() {
             <p className="text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
               Swap on PancakeSwap and move your supply on Venus. Nothing outside this list.
             </p>
-            <div className="serial mt-2" style={{ color: "var(--text-muted)" }}>
-              pancakeSwap() · venusSupply() · venusWithdraw()
+            <div className="mt-2 flex flex-wrap gap-2">
+              {["Swap · PancakeSwap", "Supply · Venus"].map((t) => (
+                <span key={t} className="rounded-[var(--radius-pill)] border border-[color:var(--border-default)] px-2.5 py-1 text-xs" style={{ color: "var(--text-secondary)" }}>
+                  {t}
+                </span>
+              ))}
+              <span className="rounded-[var(--radius-pill)] border border-[color:var(--border-strong)] px-2.5 py-1 text-xs" style={{ color: "var(--status-error)" }}>
+                everything else · refused
+              </span>
             </div>
           </Clause>
           <Clause n="II" title="Daily spend cap">

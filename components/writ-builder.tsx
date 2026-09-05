@@ -103,8 +103,15 @@ export function WritBuilder({ agent }: { agent: Agent }) {
           <p className="text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
             {agent.writPlain}
           </p>
-          <div className="serial mt-2" style={{ color: "var(--text-muted)" }}>
-            {agent.writCalls.join(" · ")}
+          <div className="mt-2 flex flex-wrap gap-2">
+            {agent.scopes.map((t) => (
+              <span key={t} className="rounded-[var(--radius-pill)] border border-[color:var(--border-default)] px-2.5 py-1 text-xs" style={{ color: "var(--text-secondary)" }}>
+                {t}
+              </span>
+            ))}
+            <span className="rounded-[var(--radius-pill)] border border-[color:var(--border-strong)] px-2.5 py-1 text-xs" style={{ color: "var(--status-error)" }}>
+              everything else · refused
+            </span>
           </div>
         </Clause>
         <Clause n="II" title="Daily spend cap">
