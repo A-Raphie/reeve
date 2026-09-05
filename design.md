@@ -38,7 +38,7 @@ Terse employment language, second person: "You set the limits. The agent works i
 7. **Advantage Report** · measured with/without comparisons, outputs attached
 
 ## Folds used
-- (empty on scaffold)
+- Landing (rebuilt to landing-page-design + ui-craft Sep 5): living-writ hero (candidate B): gradient headline left (680px cap, light-theme text gradient) + writ document right; single primary CTA above fold; proof microcopy under CTA. Then: tagline-reveal section (word-by-word, muted to ink), connected 3-step how-a-hire-works, 2x2 benefits, desk grid, FAQ (native details), final CTA identical to top. Sacrificed: candidate A desk-data-first hero (writ loses above-fold), candidate C full-bleed document hero (headline drops below fold). Specimen writ is the honest empty state; live writ replaces it from ledger/writs.json the moment a real grant lands.
 
 ## Avoid-list
 - Dark bento agent-card grids (the consensus object of this hackathon)

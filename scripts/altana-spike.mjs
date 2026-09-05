@@ -73,7 +73,7 @@ async function main() {
   log(`[6] revoked: ${revoke.transactionHash ?? JSON.stringify(revoke).slice(0, 120)}`);
 
   const a = erc8183Addresses(NETWORK.chainId);
-  log(`[7] ERC-8183 on ${BNB_TESTNET.chainId}: commerce ${a.commerce} router ${a.router} registry ${a.registry} payToken ${a.paymentToken}`);
+  log(`[7] ERC-8183 on ${NETWORK.chainId}: commerce ${a.commerce} router ${a.router} registry ${a.registry} payToken ${a.paymentToken}`);
 
   for (const url of ["https://raw.githubusercontent.com/altananetwork/skills/main/index.json", "https://skills.altana.network/index.json"]) {
     try {
