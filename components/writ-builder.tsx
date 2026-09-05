@@ -99,8 +99,13 @@ export function WritBuilder({ agent }: { agent: Agent }) {
         </span>
       </div>
       <div className="mt-4">
-        <Clause n="I" title="Allowed calls">
-          <div className="serial text-pretty">{agent.writCalls.join(" · ")}</div>
+        <Clause n="I" title="What it may do">
+          <p className="text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
+            {agent.writPlain}
+          </p>
+          <div className="serial mt-2" style={{ color: "var(--text-muted)" }}>
+            {agent.writCalls.join(" · ")}
+          </div>
         </Clause>
         <Clause n="II" title="Daily spend cap">
           <div className="flex items-center gap-3">
@@ -146,8 +151,8 @@ export function WritBuilder({ agent }: { agent: Agent }) {
             {phase === "signing" ? "Waiting for your passkey…" : `Sign the writ · cap ${cap} USDT · ${days} days`}
           </button>
           <p className="caption mt-3 text-pretty">
-            Signing creates your own passkey wallet and registers a scoped session
-            key in the Keystore. Nothing is custodial; revoke is one transaction.
+            Signing locks in these rules onchain. Your keys stay yours, and you
+            can cancel the agent any time with one click.
           </p>
         </div>
       </div>

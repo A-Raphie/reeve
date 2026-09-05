@@ -11,6 +11,7 @@ export type Agent = {
   address: string;
   writTitle: string;
   writCalls: string[];
+  writPlain: string;
   defaultCap: number;
   strategy: string;
 };
@@ -25,6 +26,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     address: "0x9339950c42E40f54ad4F709ceD0AD2ddd1B7Db21",
     writTitle: "LP management",
     writCalls: ["pancakeAddLiquidity()", "pancakeRemovePosition()", "pancakeSwap()"],
+    writPlain: "Move your PancakeSwap position and swap between its two tokens. Nothing else.",
     defaultCap: 50,
     strategy:
       "Watches the position's range every 15 minutes. When price leaves the range, it removes the position, swaps back to the paired token, and mints a fresh range around the new price. Out-of-range capital that earns nothing is the cost of skipping this agent.",
@@ -38,6 +40,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     address: "0x88F72e7361afBD8f1cDdC75ac60999dDb56418CC",
     writTitle: "Grid trading",
     writCalls: ["pancakeSwap()"],
+    writPlain: "Buy and sell one token pair, a little at a time. Nothing else.",
     defaultCap: 50,
     strategy:
       "Holds a ladder of buy and sell levels around the mid price. Each crossing executes one level and re-places it, harvesting volatility into filled spread. The writ caps the quote token the ladder may spend per day.",
@@ -51,6 +54,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     address: "0x15ceD3e1DFe1b4b748b0E52812a0c4DE41c6ff22",
     writTitle: "Supply routing",
     writCalls: ["venusSupply()", "venusWithdraw()", "aaveSupply()"],
+    writPlain: "Move your spare USDT to whichever lender pays more, and back. Nothing else.",
     defaultCap: 100,
     strategy:
       "Reads supply APRs across Venus, Aave, and Lista every round. When the best route beats the current one by more than the move cost, it withdraws and re-supplies. Otherwise it holds: the cheapest round is the one it doesn't take.",
@@ -64,6 +68,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     address: "0x0C1E7065F5F20c4A8728F1Ab063fbB1865b0b943",
     writTitle: "Liquidation guard",
     writCalls: ["venusWithdraw()", "venusRepay()"],
+    writPlain: "If your loan gets close to liquidation, pay part of it down to keep it safe. Nothing else.",
     defaultCap: 100,
     strategy:
       "Tracks the health factor of protected positions every round. Below the warning line it alerts; below the danger line it deleverages by the minimum needed to restore safety. It never touches a healthy position.",

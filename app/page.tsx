@@ -53,22 +53,22 @@ function StatusReadout({ live }: { live: boolean }) {
   return (
     <div className="grid grid-cols-2 gap-x-6 gap-y-2 border-t border-[color:var(--border-default)] px-6 py-3">
       <div>
-        <div className="micro" style={{ fontSize: "0.625rem" }}>writ status</div>
+        <div className="micro" style={{ fontSize: "0.625rem" }}>this writ</div>
         <div className="serial" style={{ color: live ? "var(--status-success)" : "var(--text-muted)" }}>
           {live ? "IN FORCE" : "SPECIMEN"}
         </div>
       </div>
       <div>
-        <div className="micro" style={{ fontSize: "0.625rem" }}>session</div>
-        <div className="serial">KEYSTORE-REGISTERED</div>
+        <div className="micro" style={{ fontSize: "0.625rem" }}>your limits</div>
+        <div className="serial">ENFORCED ONCHAIN</div>
       </div>
       <div>
-        <div className="micro" style={{ fontSize: "0.625rem" }}>spend cap</div>
-        <div className="serial">50 USDT / DAY</div>
+        <div className="micro" style={{ fontSize: "0.625rem" }}>it can spend</div>
+        <div className="serial">UP TO 50 USDT / DAY</div>
       </div>
       <div>
-        <div className="micro" style={{ fontSize: "0.625rem" }}>revocation</div>
-        <div className="serial">1 TX · INSTANT</div>
+        <div className="micro" style={{ fontSize: "0.625rem" }}>take it back</div>
+        <div className="serial">ANY TIME · 1 CLICK</div>
       </div>
     </div>
   );
@@ -121,8 +121,13 @@ function WritPanel() {
           <p className="caption mt-2 text-pretty">Grant and revoke stay with you. Every session key is registered onchain.</p>
         </div>
         <div className="mt-6">
-          <Clause n="I" title="Allowed calls">
-            <div className="serial text-pretty">pancakeSwap() · venusSupply() · venusWithdraw()</div>
+          <Clause n="I" title="What it may do">
+            <p className="text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
+              Swap on PancakeSwap and move your supply on Venus. Nothing outside this list.
+            </p>
+            <div className="serial mt-2" style={{ color: "var(--text-muted)" }}>
+              pancakeSwap() · venusSupply() · venusWithdraw()
+            </div>
           </Clause>
           <Clause n="II" title="Daily spend cap">
             <div className="flex flex-wrap items-center gap-6">
@@ -185,9 +190,9 @@ export default function Landing() {
             <span><span className="live-dot" aria-hidden />LIVE</span>
             <span>CHAIN · <strong>BSC TESTNET</strong></span>
             <span>AGENTS · <strong>4</strong></span>
-            <span>ROUNDS · <strong>EVERY 15 MIN</strong></span>
+            <span>CHECKS · <strong>EVERY 15 MIN</strong></span>
             <span>RECEIPTS · <strong>{receipts.length}</strong></span>
-            <span>CUSTODY · <strong>NONE</strong></span>
+            <span>YOUR KEYS · <strong>ALWAYS YOURS</strong></span>
           </div>
         </div>
       </div>
@@ -210,7 +215,7 @@ export default function Landing() {
               <a href="#receipts" className="btn btn-ghost">Inspect receipts</a>
             </div>
             <p className="micro mt-6">
-              Sessions granted onchain ·{" "}
+              Every limit is signed onchain ·{" "}
               <a href={`${EXPLORER}/address/0x15ceD3e1DFe1b4b748b0E52812a0c4DE41c6ff22`} target="_blank" rel="noopener noreferrer" className="underline decoration-[color:var(--border-strong)] hover:decoration-[color:var(--text-primary)]">
                 inspect the agents
               </a>

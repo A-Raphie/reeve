@@ -115,7 +115,7 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
           <div>
             <span className="micro">Authority</span>
             <h2 className="mt-3 text-2xl font-bold tracking-tight">
-              {writ ? "Working under a writ" : "Hire: sign the writ"}
+              {writ ? "Working under your rules" : "Hire: set the rules it works under"}
             </h2>
             <div className="mt-5">
               {writ ? (
