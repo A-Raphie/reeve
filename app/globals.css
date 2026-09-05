@@ -1,26 +1,218 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   Reeve semantic tokens. Source of truth: design.md.
+   Two-ink duotone: gold = principal acts (sign, fund, revoke);
+   blue = agent acts (execute, submit). Every surface answers "whose act?"
+   by ink. Values mined from bnbchain.org + skills.altana.network CSS Sep 5.
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Elevation ladder: field (desk) < surface (documents, rows) < overlay */
+  --bg-base: #eff0f1;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f7f8f8;
+  --bg-overlay: #ffffff;
+
+  /* Text tiers: exactly three */
+  --text-primary: #14161a;
+  --text-secondary: #5a5e66;
+  --text-muted: #8a8e96;
+
+  /* Border scale: hairline grid discipline, shadows banned (design.md) */
+  --border-default: rgba(20, 22, 26, 0.14);
+  --border-strong: rgba(20, 22, 26, 0.28);
+
+  /* Accent: principal ink (gold). One accent per view; the key action. */
+  --accent: #f0b90b;
+  --accent-subtle: rgba(240, 185, 11, 0.14);
+  --accent-foreground: #14161a;
+  --accent-press: #d9a50a;
+
+  /* Agent ink (Altana blue): the second party of the contract */
+  --agent: #3665e4;
+  --agent-subtle: rgba(54, 101, 228, 0.12);
+
+  /* Status: data states only (receipts, records); always with a text label */
+  --status-success: #2ebd85;
+  --status-pending: #c4c5cb;
+  --status-error: #f6465d;
+  --status-neutral: #8a8e96;
+
+  /* RGB twins for Tailwind opacity modifiers */
+  --accent-rgb: 240 185 11;
+  --agent-rgb: 54 101 228;
+  --ink-rgb: 20 22 26;
+
+  /* Radius: near-sharp documents; pills only for status chips (design.md) */
+  --radius-input: 2px;
+  --radius-card: 2px;
+  --radius-pill: 999px;
+
+  /* Type: grotesk display + mono as machine voice (serials, hashes, limits) */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-base: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-subtle: var(--bg-subtle);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-hairline: var(--border-default);
+  --color-hairline-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-press: var(--accent-press);
+  --color-agent: var(--agent);
+  --color-agent-subtle: var(--agent-subtle);
+  --color-pass: var(--status-success);
+  --color-fail: var(--status-error);
+  --color-pending: var(--status-pending);
+  --radius-input: var(--radius-input);
+  --radius-card: var(--radius-card);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Class layer ---------------------------------------------------------- */
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+}
+
+.panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+}
+
+/* Oversized grotesk numerals: the measured record is the hero (design.md) */
+.number-display {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.number-lg {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+/* Mono machine voice: serials, hashes, limit values */
+.serial {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 12px mono uppercase tracked: labels and microcopy */
+.micro {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.caption {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Buttons: 44px targets (Fitts); gold = principal action only */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-input);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border: 1px solid var(--accent-press);
+}
+.btn-primary:hover { background: var(--accent-press); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+.btn-ghost:hover { border-color: var(--text-primary); }
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.input {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-input);
+  min-height: 44px;
+  padding: 0 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  width: 100%;
+}
+.input:focus-visible {
+  outline: 3px solid rgb(var(--accent-rgb) / 0.5);
+  outline-offset: 1px;
+}
+
+/* Desk grid: 1px column rules between table cells (design.md ledger discipline) */
+.desk-grid {
+  display: grid;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  background: var(--bg-surface);
+  overflow: hidden;
+}
+.desk-cell {
+  border-bottom: 1px solid var(--border-default);
+  border-right: 1px solid var(--border-default);
+  padding: 0.875rem 1rem;
+  min-width: 0;
+}
+.desk-cell:last-child { border-right: none; }
+
+:focus-visible {
+  outline: 3px solid rgb(var(--accent-rgb) / 0.6);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
