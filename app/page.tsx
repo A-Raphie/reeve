@@ -2,24 +2,29 @@ import { CHAIN_LABEL, EXPLORER } from "@/lib/chain.mjs";
 import { liveWrit } from "@/lib/ledger";
 import { Clause, LiveDial, StatusChip } from "@/components/kit";
 import { ScrollReveal, TaglineReveal } from "@/components/reveal";
+import Link from "next/link";
 
 const CATEGORIES = [
   {
+    id: "rebalancer",
     name: "Rebalancing",
     does: "Manages LP ranges, resets positions automatically",
     where: "PancakeSwap V3",
   },
   {
+    id: "grid",
     name: "Grid Trading",
     does: "Places and manages automated grid orders",
     where: "PancakeSwap",
   },
   {
+    id: "yield",
     name: "Yield Optimisation",
     does: "Routes liquidity to the highest available APR",
     where: "Venus · Aave · Lista",
   },
   {
+    id: "guard",
     name: "Health Factor Monitoring",
     does: "Protects lending positions from liquidation",
     where: "Venus · Aave",
@@ -310,9 +315,10 @@ export default function Landing() {
           </div>
           <div className="desk-grid mt-8">
             {CATEGORIES.map((c) => (
-              <div
+              <Link
                 key={c.name}
-                className="desk-cell grid grid-cols-[1fr_auto] items-center gap-4 sm:grid-cols-[14rem_1fr_auto_auto]"
+                href={`/agent/${c.id}`}
+                className="desk-cell grid cursor-pointer grid-cols-[1fr_auto] items-center gap-4 transition-colors hover:bg-[color:var(--bg-subtle)] sm:grid-cols-[14rem_1fr_auto_auto]"
               >
                 <span className="font-semibold" style={{ color: "var(--text-primary)" }}>
                   {c.name}
@@ -322,7 +328,7 @@ export default function Landing() {
                   {c.where}
                 </span>
                 <StatusChip status="pending" label="arming" />
-              </div>
+              </Link>
             ))}
           </div>
           <p className="caption mt-3 text-pretty">

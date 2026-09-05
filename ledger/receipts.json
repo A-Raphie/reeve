@@ -1,0 +1,9 @@
+[
+  {
+    "ts": "2026-09-05T19:04:06.802Z",
+    "agent": "yield",
+    "kind": "check",
+    "summary": "Round complete: IDLE · balance 0.0008 tBNB · no writ in force, no action authorized",
+    "status": "pass"
+  }
+]

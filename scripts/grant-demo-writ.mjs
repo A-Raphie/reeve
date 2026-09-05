@@ -43,9 +43,15 @@ const entry = {
   sessionKey: sessionKey._privateKey,
 };
 
+const { sessionKey: _sk, ...ledgerEntry } = entry;
 mkdirSync("ledger", { recursive: true });
 const path = "ledger/writs.json";
 const prior = readFileSync(path, "utf8").trim() ? JSON.parse(readFileSync(path, "utf8")) : [];
-const next = [...prior.filter((x) => x.agent !== which || x.status === "void"), entry];
+const next = [...prior.filter((x) => x.agent !== which || x.status === "void"), ledgerEntry];
 writeFileSync(path, JSON.stringify(next, null, 2));
-console.log(`writ ${entry.id} granted for ${which}: ${entry.explorerTx ?? "(bundled)"}`);
+mkdirSync(".spike", { recursive: true });
+const keysPath = ".spike/writ-keys.json";
+const keys = readFileSync(keysPath, "utf8").trim() ? JSON.parse(readFileSync(keysPath, "utf8")) : {};
+keys[entry.id] = { agent: which, sessionKey: sessionKey._privateKey, publicKey: entry.publicKey };
+writeFileSync(keysPath, JSON.stringify(keys, null, 2));
+console.log(`writ ${entry.id} granted for ${which}: ${entry.explorerTx ?? "(bundled)"} (key stored in ${keysPath})`);

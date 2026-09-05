@@ -1,0 +1,30 @@
+name: agent rounds
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  round:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: run one round per agent
+        run: |
+          for a in yield rebalancer grid guard; do
+            node scripts/agent-round.mjs $a || exit 1
+          done
+      - name: commit receipts
+        run: |
+          git config user.name "reeve-agents"
+          git config user.email "agents@reeve.local"
+          git add ledger/receipts.json
+          git diff --cached --quiet || git commit -m "receipts: scheduled rounds"
+          git push
