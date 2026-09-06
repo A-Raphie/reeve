@@ -40,5 +40,19 @@
     "kind": "check",
     "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
+  },
+  {
+    "ts": "2026-09-06T01:19:30.494Z",
+    "agent": "yield",
+    "kind": "refusal",
+    "summary": "Refused: send to 0x00000000… is outside clause I · the writ only allows its listed calls",
+    "status": "pass"
+  },
+  {
+    "ts": "2026-09-06T01:19:31.179Z",
+    "agent": "yield",
+    "kind": "check",
+    "summary": "Round complete: HOLD · balance 0.0960 tBNB · writ RW-MTP3WFMY in force",
+    "status": "pass"
   }
 ]

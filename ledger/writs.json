@@ -1,0 +1,25 @@
+[
+  {
+    "id": "RW-MTP3WFMY",
+    "agent": "yield",
+    "agentAddress": "0x15ceD3e1DFe1b4b748b0E52812a0c4DE41c6ff22",
+    "walletAddress": "0x15ceD3e1DFe1b4b748b0E52812a0c4DE41c6ff22",
+    "publicKey": "0x04ae98fe353ffe99dcd7ef42f25022d176949e00b05ec90ebe4d7183c9a833333cec235b4591fb6fc1897c9ac169312a1a5de45f4303813a3441b7a209fba16bf5",
+    "calls": [
+      {
+        "to": "0x15ceD3e1DFe1b4b748b0E52812a0c4DE41c6ff22"
+      }
+    ],
+    "spend": [
+      {
+        "limit": "50000000000000000000",
+        "period": "day"
+      }
+    ],
+    "expiry": 1789261283,
+    "grantTx": "0x48b088660f48c4567560725cd6dc1bc342d9675b068233f334a290f883acc9e2",
+    "explorerTx": "https://testnet.bscscan.com/tx/0x48b088660f48c4567560725cd6dc1bc342d9675b068233f334a290f883acc9e2",
+    "status": "in force",
+    "grantedAt": "2026-09-06T01:01:44.362Z"
+  }
+]
