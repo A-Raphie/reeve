@@ -70,7 +70,7 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
             </div>
             <h1 className="mt-4 text-5xl font-bold tracking-[-0.04em] text-balance">{agent.job}</h1>
             <p className="caption mt-4 max-w-[560px] text-lg text-pretty">{agent.does}.</p>
-            <p className="mt-6 max-w-[560px] text-base leading-7 text-pretty" style={{ color: "var(--text-primary)" }}>
+            <p className="caption mt-6 max-w-[560px] text-base leading-7 text-pretty">
               {agent.strategy}
             </p>
             <div className="mt-8 max-w-[560px]">
@@ -111,31 +111,34 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
           </div>
           <div>
             <span className="micro">Measured record</span>
-            <div className="mt-4 grid grid-cols-3 gap-4">
-              <div>
-                <div className="text-8xl font-bold tracking-[-0.04em] tabular-nums" style={{ lineHeight: 1 }}>
-                  <CountUp value={actions} className="text-8xl font-bold tracking-[-0.04em] tabular-nums" />
+            <div className="record-panel mt-4">
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <CountUp value={actions} className="block text-7xl font-bold tracking-[-0.04em] tabular-nums" />
+                  <div className="micro mt-2">{actions === 1 ? "action taken" : "actions taken"}</div>
                 </div>
-                <div className="micro mt-2">{actions === 1 ? "action taken" : "actions taken"}</div>
+                <div>
+                  <CountUp value={checks} className="block text-7xl font-bold tracking-[-0.04em] tabular-nums" />
+                  <div className="micro mt-2">{checks === 1 ? "round checked" : "rounds checked"}</div>
+                </div>
+                <div>
+                  <CountUp value={refusals} className="block text-7xl font-bold tracking-[-0.04em] tabular-nums" />
+                  <div className="micro mt-2">{refusals === 1 ? "call refused" : "calls refused"}</div>
+                </div>
               </div>
-              <div>
-                <div className="text-8xl font-bold tracking-[-0.04em] tabular-nums" style={{ lineHeight: 1 }}>
-                  <CountUp value={checks} className="text-8xl font-bold tracking-[-0.04em] tabular-nums" />
-                </div>
-                <div className="micro mt-2">{checks === 1 ? "round checked" : "rounds checked"}</div>
-              </div>
-              <div>
-                <div className="text-8xl font-bold tracking-[-0.04em] tabular-nums" style={{ lineHeight: 1 }}>
-                  <CountUp value={refusals} className="text-8xl font-bold tracking-[-0.04em] tabular-nums" />
-                </div>
-                <div className="micro mt-2">{refusals === 1 ? "call refused" : "calls refused"}</div>
+              <div className="mt-5 border-t border-[color:var(--border-default)] pt-4">
+                <p className="text-sm font-semibold text-pretty" style={{ color: "var(--text-primary)" }}>
+                  {refusals > 0
+                    ? `Clean boundary: ${refusals} out-of-writ ${refusals === 1 ? "call was" : "calls were"} refused by the chain, ${actions} executed inside the limits.`
+                    : actions + checks > 0
+                      ? `Every action so far stayed inside the writ. ${checks} ${checks === 1 ? "round" : "rounds"} checked on schedule.`
+                      : "Numbers land as the agent runs. Checks are free reads; actions are onchain and receipted."}
+                </p>
+                <p className="caption mt-2 text-pretty">
+                  Every number above is a real onchain event, receipted against the writ that authorized it.
+                </p>
               </div>
             </div>
-            <p className="caption mt-4 text-pretty">
-              {actions + checks > 0
-                ? "Every number above is a real onchain event, receipted against the writ that authorized it."
-                : "Numbers land as the agent runs. Checks are free reads; actions are onchain and receipted."}
-            </p>
           </div>
         </section>
 

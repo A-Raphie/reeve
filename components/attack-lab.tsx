@@ -88,6 +88,21 @@ export function AttackLab({ writId }: { writId: string | null }) {
         lands in the receipt ledger. Nothing here is simulated.
       </p>
 
+      <div className="mt-8 grid grid-cols-3 gap-4">
+        <div className="record-panel">
+          <div className="number-lg">{blocked.length}</div>
+          <div className="micro mt-1">attacks refused</div>
+        </div>
+        <div className="record-panel">
+          <div className="number-lg" style={{ color: wrote ? "var(--status-error)" : "var(--text-primary)" }}>0</div>
+          <div className="micro mt-1">{wrote ? "executed · defect" : "breakouts executed"}</div>
+        </div>
+        <div className="record-panel">
+          <div className="number-lg">{["stranger", "overcap", "revoked", "expired"].filter((id) => blocked.some((b) => b.id === id)).length} / 4</div>
+          <div className="micro mt-1">attack types proven</div>
+        </div>
+      </div>
+
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         {ATTACKS.map((a) => {
           const hits = blocked.filter((b) => b.id === a.id).length;
@@ -108,7 +123,7 @@ export function AttackLab({ writId }: { writId: string | null }) {
               <button
                 onClick={() => fire(a.id, a.title)}
                 disabled={running !== null}
-                className="btn btn-ghost mt-4 w-full"
+                className="btn btn-danger mt-4 w-full"
               >
                 {running === a.id ? "Firing onchain… (up to 60s)" : running ? "Wait for the current attack" : `Fire the ${a.id} attack`}
               </button>
