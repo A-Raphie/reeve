@@ -185,6 +185,7 @@ export default function Landing() {
           <span className="text-lg font-bold tracking-tight">Reeve</span>
           <div className="flex items-center gap-4">
             <span className="micro hidden md:inline">{CHAIN_LABEL}</span>
+            <Link href="/lab" className="micro hidden sm:inline underline decoration-[color:var(--border-strong)] hover:decoration-[color:var(--text-primary)]">Security Lab</Link>
             <a href="#desk" className="btn btn-primary">Open the desk</a>
           </div>
         </div>

@@ -38,6 +38,7 @@ try {
     ts: new Date().toISOString(),
     agent: writ.agent,
     kind: "refusal",
+    status: "pass",
     summary: `Refused: send to ${stranger.slice(0, 10)}… is outside clause I · the writ only allows its listed calls`,
     status: "pass",
   });
