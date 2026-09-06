@@ -20,52 +20,31 @@ export function WritBuilder({ agent }: { agent: Agent }) {
   async function sign() {
     setPhase("signing");
     setError(null);
+    // Safety net: WebAuthn prompts can hang in embedded browsers. 45s max wait.
+    const timeout = setTimeout(() => {
+      setError("The signature request timed out. Nothing was signed. Try again.");
+      setPhase("failed");
+    }, 45_000);
     try {
-      const [{ createClient, createPrivateKeySigner, serializeSession }, { NETWORK }] = await Promise.all([
-        import("@altananetwork/sdk"),
-        import("@/lib/chain.mjs"),
-      ]);
-      const client = createClient({ chains: [NETWORK], defaultChainId: NETWORK.chainId });
-
-      // The delegator's own passkey wallet: noncustodial, created in this browser.
-      const wallet = await client.createPasskeyWallet({ name: "Reeve" });
-      const sessionSigner = createPrivateKeySigner();
-
-      const expiry = Math.floor(Date.now() / 1000) + days * 24 * 3600;
-      const grant = await client.grantSession({
-        wallet,
-        signer: wallet.signer,
-        sessionSigner,
-        permissions: {
-          calls: [{ to: agent.address as `0x${string}` }],
-          spend: [{ limit: BigInt(Math.floor(cap)) * 10n ** 18n, period: "day" }],
-        },
-        expiry,
-        register: true,
-      });
-
-      const id = `RW-${Date.now().toString(36).toUpperCase()}`;
-      const session = serializeSession(grant);
-      await fetch("/api/writ", {
+      const res = await fetch("/api/writ/grant", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          agentId: agent.id,
-          id,
-          session,
-          sessionKey: sessionSigner._privateKey,
-          tx: grant.transactionHash ?? null,
-        }),
-      }).catch(() => null); // ledger index defers gracefully on read-only hosts
-
-      setResult({ id, tx: grant.transactionHash ?? null });
+        body: JSON.stringify({ agentId: agent.id, cap, days }),
+      });
+      const body = await res.json();
+      if (!res.ok || !body.ok) {
+        throw new Error(body.error ?? "the chain refused the grant");
+      }
+      clearTimeout(timeout);
+      setResult({ id: body.id, tx: body.tx ?? null });
       setPhase("granted");
     } catch (e) {
+      clearTimeout(timeout);
       const msg = e instanceof Error ? e.message : String(e);
       setError(
-        msg.includes("NotAllowed")
-          ? "The passkey prompt was dismissed. Nothing was signed; try again when ready."
-          : "Signing failed before anything reached the chain. No funds moved. Try again.",
+        msg.includes("timed out")
+          ? msg
+          : `Signing did not reach the chain: ${msg.slice(0, 120)}. No funds moved. Try again.`,
       );
       setPhase("failed");
     }
@@ -155,11 +134,14 @@ export function WritBuilder({ agent }: { agent: Agent }) {
             </p>
           )}
           <button onClick={sign} disabled={phase === "signing"} className="btn btn-primary w-full">
-            {phase === "signing" ? "Waiting for your passkey…" : `Sign the writ · cap ${cap} USDT · ${days} days`}
+            {phase === "signing"
+              ? "Registering the session onchain…"
+              : `Sign the writ · cap ${cap} USDT · ${days} days`}
           </button>
           <p className="caption mt-3 text-pretty">
-            Signing locks in these rules onchain. Your keys stay yours, and you
-            can cancel the agent any time with one click.
+            Signing locks these rules onchain with the demo operator key and
+            registers a scoped session in the Keystore. Revocation stays one
+            click; self-custodied passkey signing lands at the mainnet cutover.
           </p>
         </div>
       </div>

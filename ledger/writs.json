@@ -21,5 +21,27 @@
     "explorerTx": "https://testnet.bscscan.com/tx/0x48b088660f48c4567560725cd6dc1bc342d9675b068233f334a290f883acc9e2",
     "status": "in force",
     "grantedAt": "2026-09-06T01:01:44.362Z"
+  },
+  {
+    "id": "RW-MTPKXPN0",
+    "agent": "guard",
+    "walletAddress": "0x0C1E7065F5F20c4A8728F1Ab063fbB1865b0b943",
+    "publicKey": "0x0464b53bc0603b89832951f4fa8ab9f436a88709ddd43bc6e9b97bc19fa211c75870bfdea7171365aa79d49d6ddc2eb289e563f80f6113355389a8217a8ec0693c",
+    "calls": [
+      {
+        "to": "0x0C1E7065F5F20c4A8728F1Ab063fbB1865b0b943"
+      }
+    ],
+    "spend": [
+      {
+        "limit": "100000000000000000000",
+        "period": "day"
+      }
+    ],
+    "expiry": 1789289897,
+    "grantTx": "0x83085407b47ff8f5c92a9254294f033c65a029923276fa08aebb3a72fff16738",
+    "explorerTx": "https://testnet.bscscan.com/tx/0x83085407b47ff8f5c92a9254294f033c65a029923276fa08aebb3a72fff16738",
+    "status": "in force",
+    "grantedAt": "2026-09-06T08:58:37.453Z"
   }
 ]
