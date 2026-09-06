@@ -303,6 +303,17 @@ body {
   border-top-color: var(--status-error);
 }
 
+/* Subject panel: the page's core document (the writ) gets the gold top rule.
+   Mirrors .attack-card's red rule — subject vs threat, two inks, one grammar. */
+.subject-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius-card);
+}
+.subject-card:hover { border-color: rgb(var(--accent-rgb) / 0.45); }
+
 /* Measured-record panel: numerals live in a framed group with a verdict line */
 .record-panel {
   background: var(--bg-surface);

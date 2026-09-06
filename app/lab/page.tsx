@@ -26,25 +26,21 @@ export default function SecurityLab() {
 
       <main className="mx-auto relative w-full max-w-6xl flex-1 px-6">
         <span className="corner-serial hidden sm:block">REEVE/LAB · {writ ? writ.id : "NO-WRIT"} · BSC-T</span>
-        <section className="py-16">
+        <section className="py-12">
           <span className="micro">Security Lab · live onchain</span>
           <h1 className="mt-3 max-w-[720px] text-5xl font-bold leading-[1.02] tracking-[-0.04em] text-balance sm:text-6xl">
             Attack the writ. Watch it hold.
           </h1>
-          <p className="caption mt-5 max-w-[680px] text-lg text-pretty">
-            The paired app turns malicious. Every button below fires a real
-            request against a live session on BNB Chain, and every refusal
-            comes back from the Keystore contracts with the clause that caused
-            it. Nothing here is simulated — and if an attack ever gets through,
-            the page says so instead of pretending.
-          </p>
-          <p className="micro mt-6">
-            Live writ · {writ ? writ.id : "none on this host"} · refusals are
-            receipted publicly
+          <p className="caption mt-4 max-w-[680px] text-pretty">
+            Every button fires a real request against live writ{" "}
+            <span className="act-principal">{writ ? writ.id : "— none on this host"}</span>{" "}
+            and every refusal comes back from the Keystore contracts with the
+            clause that caused it. If an attack ever gets through, the page says
+            so instead of pretending.
           </p>
         </section>
 
-        <section className="border-t border-[color:var(--border-default)] py-16">
+        <section className="pb-16">
           <AttackLab writId={writ ? writ.id : null} />
         </section>
 

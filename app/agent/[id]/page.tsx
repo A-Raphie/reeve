@@ -157,16 +157,17 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
           </div>
         </section>
 
-        <section className="grid gap-12 border-t border-[color:var(--border-default)] py-16 lg:grid-cols-[1fr_1fr]">
-          {/* Writ panel: current writ or the builder */}
+        <hr className="clause-rule" />
+        <section className="grid gap-12 py-16 lg:grid-cols-[1fr_1fr]">
+          {/* Writ panel: current writ or the builder — the page's subject */}
           <div>
-            <span className="micro">Authority</span>
+            <span className="micro">Authority · what it may do</span>
             <h2 className="mt-3 text-2xl font-bold tracking-tight">
               {writ ? "Working under your rules" : "Hire: set the rules it works under"}
             </h2>
             <div className="mt-5">
               {writ ? (
-                <div className="card">
+                <div className="subject-card">
                   <div className="flex items-center justify-between px-6 pt-4">
                     <span className="micro">Writ of limits</span>
                     <span className="serial" style={{ color: "var(--text-muted)" }}>

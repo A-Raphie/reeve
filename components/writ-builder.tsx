@@ -70,7 +70,7 @@ export function WritBuilder({ agent }: { agent: Agent }) {
   }
 
   return (
-    <div className="card">
+    <div className="subject-card">
       <div className="flex items-center justify-between px-6 pt-4">
         <span className="micro">Writ of limits · {agent.writTitle}</span>
         <span className="serial" style={{ color: "var(--text-muted)" }}>
