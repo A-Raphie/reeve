@@ -87,7 +87,8 @@ function WritPanel() {
         <div className="mt-4 px-6">
           <h2 className="text-2xl font-bold tracking-tight text-balance">Signed. Registered. In force.</h2>
           <p className="caption mt-2 text-pretty">
-            {writ.agent} works under this writ right now. Every action lands against it.
+            <span className="act-agent font-medium">{writ.agent}</span> works
+            under this writ right now. Every action lands against it.
           </p>
         </div>
         <div className="mt-6">
