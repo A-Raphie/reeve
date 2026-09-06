@@ -58,7 +58,8 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-6xl flex-1 px-6">
+      <main className="mx-auto relative w-full max-w-6xl flex-1 px-6">
+        <span className="corner-serial hidden sm:block">REEVE/{agent.id.toUpperCase()} · {writ ? writ.id : "NO-WRIT"}</span>
         {/* Identity + measured record */}
         <section className="grid gap-12 py-16 lg:grid-cols-[1fr_1fr]">
           <div>
@@ -128,11 +129,25 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
               </div>
               <div className="mt-5 border-t border-[color:var(--border-default)] pt-4">
                 <p className="text-sm font-semibold text-pretty" style={{ color: "var(--text-primary)" }}>
-                  {refusals > 0
-                    ? `Clean boundary: ${refusals} out-of-writ ${refusals === 1 ? "call was" : "calls were"} refused by the chain, ${actions} executed inside the limits.`
-                    : actions + checks > 0
-                      ? `Every action so far stayed inside the writ. ${checks} ${checks === 1 ? "round" : "rounds"} checked on schedule.`
-                      : "Numbers land as the agent runs. Checks are free reads; actions are onchain and receipted."}
+                  {refusals > 0 ? (
+                    <>
+                      Clean boundary:{" "}
+                      <span className="act-agent">{refusals}</span> out-of-writ{" "}
+                      {refusals === 1 ? "call" : "calls"} refused by the chain ·{" "}
+                      <span className="act-principal">{actions}</span> executed
+                      inside your limits.
+                    </>
+                  ) : actions + checks > 0 ? (
+                    <>
+                      Every action so far stayed inside the writ. {checks}{" "}
+                      {checks === 1 ? "round" : "rounds"} checked on schedule.
+                    </>
+                  ) : (
+                    <>
+                      Numbers land as the agent runs. Checks are free reads;
+                      actions are onchain and receipted.
+                    </>
+                  )}
                 </p>
                 <p className="caption mt-2 text-pretty">
                   Every number above is a real onchain event, receipted against the writ that authorized it.

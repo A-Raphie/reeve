@@ -107,7 +107,7 @@ export function AttackLab({ writId }: { writId: string | null }) {
         {ATTACKS.map((a) => {
           const hits = blocked.filter((b) => b.id === a.id).length;
           return (
-            <div key={a.id} className="card card-hover p-6">
+            <div key={a.id} className="attack-card">
               <div className="flex items-start justify-between gap-3">
                 <h3 className="text-lg font-semibold tracking-tight">{a.title}</h3>
                 {hits > 0 && (

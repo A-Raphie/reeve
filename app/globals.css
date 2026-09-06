@@ -253,6 +253,56 @@ body {
 }
 .btn-danger:disabled { opacity: 0.4; }
 
+/* Act inks: whose action is this? gold = principal (you), blue = the agent.
+   Used on rows, chips, and verdict lines across surfaces. */
+.act-principal { color: var(--accent-press); }
+.act-agent { color: var(--agent); }
+
+/* Clause rule: section separator styled like a contract's clause divider */
+.clause-rule {
+  border: none;
+  border-top: 1px solid var(--border-default);
+  position: relative;
+  overflow: visible;
+}
+.clause-rule::after {
+  content: "§";
+  position: absolute;
+  right: 0;
+  top: -0.7em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-base);
+  padding: 0 0.5rem;
+}
+
+/* Corner serial: the page's document number, top-right, machine voice */
+.corner-serial {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* Attack card: the four attacks get a target-reticle top border, danger-tinted */
+.attack-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-top: 2px solid rgb(246 70 93 / 0.55);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.attack-card:hover {
+  border-color: rgb(246 70 93 / 0.45);
+  border-top-color: var(--status-error);
+}
+
 /* Measured-record panel: numerals live in a framed group with a verdict line */
 .record-panel {
   background: var(--bg-surface);

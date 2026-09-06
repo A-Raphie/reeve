@@ -24,7 +24,8 @@ export default function SecurityLab() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-6xl flex-1 px-6">
+      <main className="mx-auto relative w-full max-w-6xl flex-1 px-6">
+        <span className="corner-serial hidden sm:block">REEVE/LAB · {writ ? writ.id : "NO-WRIT"} · BSC-T</span>
         <section className="py-16">
           <span className="micro">Security Lab · live onchain</span>
           <h1 className="mt-3 max-w-[720px] text-5xl font-bold leading-[1.02] tracking-[-0.04em] text-balance sm:text-6xl">
