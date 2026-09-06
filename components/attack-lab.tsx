@@ -40,7 +40,7 @@ type Result = {
   ts: string;
 };
 
-export function AttackLab({ writId }: { writId: string | null }) {
+export function AttackLab({ writId, ledgerRefusals }: { writId: string | null; ledgerRefusals: number }) {
   const [running, setRunning] = useState<AttackId | null>(null);
   const [blocked, setBlocked] = useState<Result[]>([]);
   const [wrote, setWrote] = useState(false); // an attack executed without refusal = boundary failed
@@ -82,15 +82,9 @@ export function AttackLab({ writId }: { writId: string | null }) {
 
   return (
     <div>
-      <p className="caption max-w-[680px] text-pretty">
-        Every button fires a real request against live writ {writId} through its
-        real session key. Every refusal comes from the Keystore contracts and
-        lands in the receipt ledger. Nothing here is simulated.
-      </p>
-
       <div className="mt-8 grid grid-cols-3 gap-4">
         <div className="record-panel">
-          <div className="number-lg">{blocked.length}</div>
+          <div className="number-lg">{ledgerRefusals + blocked.length}</div>
           <div className="micro mt-1">attacks refused</div>
         </div>
         <div className="record-panel">

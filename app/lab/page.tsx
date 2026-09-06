@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { liveWrit } from "@/lib/ledger";
 import { AttackLab } from "@/components/attack-lab";
+import { readReceipts } from "@/lib/ledger";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 
 export default function SecurityLab() {
   const writ = liveWrit();
+  const labRefusals = readReceipts("yield").filter((r) => r.kind === "refusal").length;
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -26,22 +28,15 @@ export default function SecurityLab() {
 
       <main className="mx-auto relative w-full max-w-6xl flex-1 px-6">
         <span className="corner-serial hidden sm:block">REEVE/LAB · {writ ? writ.id : "NO-WRIT"} · BSC-T</span>
-        <section className="py-12">
+        <section className="pb-10 pt-12">
           <span className="micro">Security Lab · live onchain</span>
           <h1 className="mt-3 max-w-[720px] text-5xl font-bold leading-[1.02] tracking-[-0.04em] text-balance sm:text-6xl">
             Attack the writ. Watch it hold.
           </h1>
-          <p className="caption mt-4 max-w-[680px] text-pretty">
-            Every button fires a real request against live writ{" "}
-            <span className="act-principal">{writ ? writ.id : "— none on this host"}</span>{" "}
-            and every refusal comes back from the Keystore contracts with the
-            clause that caused it. If an attack ever gets through, the page says
-            so instead of pretending.
-          </p>
         </section>
 
         <section className="pb-16">
-          <AttackLab writId={writ ? writ.id : null} />
+          <AttackLab writId={writ ? writ.id : null} ledgerRefusals={labRefusals} />
         </section>
 
         <section className="border-t border-[color:var(--border-default)] py-16">

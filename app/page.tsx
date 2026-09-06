@@ -183,10 +183,10 @@ export default function Landing() {
       <header className="border-b border-[color:var(--border-default)]">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <span className="text-lg font-bold tracking-tight">Reeve</span>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <span className="micro hidden md:inline">{CHAIN_LABEL}</span>
             <Link href="/lab" className="micro hidden sm:inline underline decoration-[color:var(--border-strong)] hover:decoration-[color:var(--text-primary)]">Security Lab</Link>
-            <a href="#desk" className="btn btn-primary">Open the desk</a>
+            <a href="#desk" className="btn btn-primary px-4 text-sm sm:px-5 sm:text-base">Open the desk</a>
           </div>
         </div>
       </header>
@@ -320,9 +320,9 @@ export default function Landing() {
           <p className="micro mt-12">For machines · agents hire agents through escrow</p>
           <div className="code-block mt-3">
             <span className="c-dim">{"// ERC-8183: one agent hires another, escrow holds the budget"}</span>{"\n"}
-            <span className="c-accent">const</span> job = <span className="c-accent">await</span> hireErc8183Agent(session, {"{"} task: <span style={{ color: "var(--accent-press)" }}>&quot;rebalance my PCS position&quot;</span>, budget: 10n {"}"}){"\n"}
+            <span className="c-accent">const</span> job = <span className="c-accent">await</span> hireErc8183Agent(session, {"{"} task: <span style={{ color: "var(--accent-press)" }}>"rebalance my PCS position"</span>, budget: 10n {"}"}){"\n"}
             <span className="c-dim">{"// settle when the deliverable checks out · dispute when it does not"}</span>{"\n"}
-            <span className="c-accent">await</span> settleErc8183Job(session, {"{"} jobId: job.jobId, action: <span style={{ color: "var(--accent-press)" }}>&quot;approve&quot;</span> {"}"})
+            <span className="c-accent">await</span> settleErc8183Job(session, {"{"} jobId: job.jobId, action: <span style={{ color: "var(--accent-press)" }}>"approve"</span> {"}"})
           </div>
         </section>
 

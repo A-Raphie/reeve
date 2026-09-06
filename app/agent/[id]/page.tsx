@@ -175,6 +175,18 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
                     </span>
                   </div>
                   <div className="mt-4">
+                    <Clause n="I" title="What it may do">
+                      <p className="text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
+                        {agent.writPlain}
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {agent.scopes.map((t) => (
+                          <span key={t} className="rounded-[var(--radius-pill)] border border-[color:var(--border-default)] px-2.5 py-1 text-xs" style={{ color: "var(--text-secondary)" }}>
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </Clause>
                     <Clause n="II" title="Daily spend cap">
                       <div className="flex flex-wrap items-center gap-4">
                         <LiveDial
