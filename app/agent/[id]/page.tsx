@@ -194,7 +194,7 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
                           used={0}
                           cap={Number(writ.spend[0]?.limit ?? "0") / 1e18}
                           ink="principal"
-                          format={(n) => `${n.toFixed(1)}`}
+                          format={(n) => `${n.toFixed(1)} tBNB`}
                         />
                       </div>
                     </Clause>

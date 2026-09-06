@@ -64,7 +64,7 @@ function StatusReadout({ live }: { live: boolean }) {
       </div>
       <div>
         <div className="micro" style={{ fontSize: "0.625rem" }}>it can spend</div>
-        <div className="serial">UP TO 50 USDT / DAY</div>
+        <div className="serial">UP TO 50 tBNB / DAY</div>
       </div>
       <div>
         <div className="micro" style={{ fontSize: "0.625rem" }}>take it back</div>
@@ -139,7 +139,7 @@ function WritPanel() {
           </Clause>
           <Clause n="II" title="Daily spend cap">
             <div className="flex flex-wrap items-center gap-6">
-              <LiveDial label="Spend · per day" used={12.4} cap={50} ink="principal" format={(n) => `${n.toFixed(1)} USDT`} />
+              <LiveDial label="Spend · per day" used={12.4} cap={50} ink="principal" format={(n) => `${n.toFixed(1)} tBNB`} />
               <LiveDial label="Calls used" used={3} cap={20} ink="agent" format={(n) => `${n}`} />
             </div>
           </Clause>
@@ -245,8 +245,16 @@ export default function Landing() {
         <section className="border-t border-[color:var(--border-default)] py-10">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <span className="micro">Built on</span>
-            {["Altana session keys", "PancakeSwap", "Venus", "Aave", "Lista", "ERC-8183 escrow", "8004scan"].map((t) => (
-              <span key={t} className="serial" style={{ color: "var(--text-secondary)" }}>
+            {["Altana session keys", "BNB Smart Chain Keystore", "GitHub Actions rounds"].map((t) => (
+              <span key={t} className="serial" style={{ color: "var(--text-primary)" }}>
+                {t}
+              </span>
+            ))}
+          </div>
+          <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <span className="micro" style={{ color: "var(--text-muted)" }}>Integrating at cutover</span>
+            {["PancakeSwap execution", "Venus · Aave · Lista routing", "ERC-8183 escrow", "8004scan identity"].map((t) => (
+              <span key={t} className="serial" style={{ color: "var(--text-muted)" }}>
                 {t}
               </span>
             ))}

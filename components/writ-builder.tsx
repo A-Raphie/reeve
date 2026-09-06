@@ -105,7 +105,7 @@ export function WritBuilder({ agent }: { agent: Agent }) {
               className="input max-w-32"
               aria-label="Daily spend cap"
             />
-            <span className="caption">USDT per day · enforced onchain</span>
+            <span className="caption">tBNB per day · enforced onchain</span>
           </div>
         </Clause>
         <Clause n="III" title="Expiry">
