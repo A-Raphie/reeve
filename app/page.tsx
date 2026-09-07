@@ -213,7 +213,7 @@ export default function Landing() {
 
       <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-6">
         {/* Hero */}
-        <section className="grid items-center gap-16 py-20 lg:grid-cols-[1.05fr_1fr]">
+        <section className="grid items-start gap-12 pt-12 pb-20 lg:grid-cols-[1.05fr_1fr]">
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <ChainBits as="pill" short={CHAIN_SHORT} origin={CHAIN_ORIGIN} />
