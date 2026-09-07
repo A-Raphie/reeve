@@ -5,10 +5,10 @@ import { TaglineReveal } from "@/components/reveal";
 import Link from "next/link";
 
 const CATEGORIES = [
-  { id: "rebalancer", name: "Rebalancing", does: "Manages LP ranges, resets positions automatically", where: "PancakeSwap V3" },
-  { id: "grid", name: "Grid Trading", does: "Places and manages automated grid orders", where: "PancakeSwap" },
-  { id: "yield", name: "Yield Optimisation", does: "Routes liquidity to the highest available APR", where: "Venus · Aave · Lista" },
-  { id: "guard", name: "Health Factor Monitoring", does: "Protects lending positions from liquidation", where: "Venus · Aave" },
+  { id: "rebalancer", name: "Rebalancing", does: "Manages LP ranges, resets positions automatically", where: "PancakeSwap V3", wallet: "0x9339950c42E4…1B7Db21" },
+  { id: "grid", name: "Grid Trading", does: "Places and manages automated grid orders", where: "PancakeSwap", wallet: "0x88F72e7361af…56418CC" },
+  { id: "yield", name: "Yield Optimisation", does: "Routes liquidity to the highest available APR", where: "Venus · Aave · Lista", wallet: "0x15ceD3e1DFe1…c6ff22" },
+  { id: "guard", name: "Health Factor Monitoring", does: "Protects lending positions from liquidation", where: "Venus · Aave", wallet: "0x0C1E7065F5F2…b0b943" },
 ];
 
 const STATS = [
@@ -268,7 +268,7 @@ export default function Landing() {
             {STATS.map((s) => (
               <div>
                 <div className="card card-hover h-full p-6">
-                  <div className="text-5xl font-bold tabular-nums" style={{ lineHeight: 1, letterSpacing: "-0.04em" }}>{s.n}</div>
+                  <div className="text-6xl font-bold tabular-nums" style={{ lineHeight: 1, letterSpacing: "-0.04em" }}>{s.n}</div>
                   <div className="mt-4 text-sm font-semibold text-pretty" style={{ color: "var(--text-primary)" }}>{s.label}</div>
                   <p className="caption mt-2 text-pretty">{s.detail}</p>
                 </div>
@@ -361,12 +361,17 @@ export default function Landing() {
                 <Link
                   key={c.id}
                   href={`/agent/${c.id}`}
-                  className="desk-cell grid cursor-pointer grid-cols-[1fr_auto] items-center gap-4 transition-colors hover:bg-[color:var(--bg-subtle)] sm:grid-cols-[12rem_1fr_7rem_auto]"
+                  className="desk-cell group grid cursor-pointer grid-cols-[1fr_auto] items-center gap-4 transition-colors hover:bg-[color:var(--bg-subtle)] sm:grid-cols-[10rem_1fr_6rem_5rem_auto]"
                 >
-                  <span className="font-semibold" style={{ color: "var(--text-primary)" }}>{c.name}</span>
+                  <span className="font-semibold transition-colors group-hover:text-[color:var(--accent-press)]" style={{ color: "var(--text-primary)" }}>
+                    {c.name}
+                  </span>
                   <span className="caption hidden sm:block">{c.does}</span>
-                  <span className="serial hidden text-right sm:inline" style={{ color: "var(--text-muted)" }}>
+                  <span className="serial hidden text-right sm:inline" style={{ color: "var(--agent)" }}>
                     {count} receipt{count === 1 ? "" : "s"}
+                  </span>
+                  <span className="serial hidden text-right sm:inline" style={{ color: "var(--text-muted)" }}>
+                    {c.wallet.slice(0, 6)}…{c.wallet.slice(-4)}
                   </span>
                   <StatusChip status="pending" label="arming" />
                 </Link>
@@ -395,7 +400,7 @@ export default function Landing() {
                   <span className="truncate text-sm" style={{ color: "var(--text-primary)" }}>
                     <span className="serial" style={{ color: "var(--agent)" }}>{r.agent}</span> · {r.summary}
                   </span>
-                  <StatusChip status={r.status} label="done" />
+                  <StatusChip status={r.status} label={r.kind === "refusal" ? "refused" : "done"} />
                 </div>
               ))
             ) : (
