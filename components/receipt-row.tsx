@@ -31,7 +31,7 @@ export function ReceiptRow({
       </span>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="cursor-pointer text-left"
+        className="min-w-0 cursor-pointer text-left"
         aria-expanded={open}
         title={summary}
       >
@@ -39,7 +39,7 @@ export function ReceiptRow({
           {summary}
         </span>
         {detail ? (
-          <span className={open ? "caption block" : "caption block truncate"}> · {detail}</span>
+          <span className="caption block max-w-full overflow-hidden text-ellipsis whitespace-nowrap" style={{ overflowWrap: "anywhere" }}> · {detail}</span>
         ) : null}
       </button>
       <span className="flex items-center gap-3">

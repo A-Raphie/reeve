@@ -34,7 +34,8 @@
   --agent-subtle: rgba(54, 101, 228, 0.12);
 
   /* Status: data states only (receipts, records); always with a text label */
-  --status-success: #2ebd85;
+  --status-success: #2ebd85; /* fills, dots, chips — never small text */
+  --status-success-ink: #1e7a55; /* small text on light surfaces: 4.64 field / 5.29 white */
   --status-pending: #c4c5cb;
   --status-error: #f6465d;
   --status-neutral: #8a8e96;
@@ -155,6 +156,7 @@ body {
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
+  max-width: 100%;
   padding: 0.5rem 0;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -199,8 +201,18 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--accent-press);
+  color: var(--text-secondary); /* was accent-press at ~2:1 — decorative gold stays on shapes, never on text */
   letter-spacing: 0.05em;
+}
+.section-num::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  margin-right: 6px;
+  vertical-align: 1px;
 }
 .section-label {
   font-family: var(--font-mono);
@@ -400,4 +412,13 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Mobile containment (375 audit): nothing on any page may force horizontal scroll */
+@media (max-width: 640px) {
+  .card, .panel, .subject-card, .attack-card, .record-panel { max-width: 100%; }
+  .desk-cell { min-width: 0; overflow-wrap: anywhere; }
+  .serial { overflow-wrap: anywhere; word-break: break-word; }
+  .code-block { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .corner-serial { display: none; }
 }

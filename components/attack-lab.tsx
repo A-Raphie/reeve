@@ -110,7 +110,7 @@ export function AttackLab({ writId, ledgerRefusals }: { writId: string | null; l
                 {hits > 0 && (
                   <span
                     className="rounded-[var(--radius-pill)] px-2.5 py-1 text-xs font-semibold"
-                    style={{ color: "var(--status-success)", background: "rgb(var(--refund-rgb) / 0.1)" }}
+                    style={{ color: "var(--status-success-ink)", background: "rgb(var(--refund-rgb) / 0.1)" }}
                   >
                     blocked ×{hits}
                   </span>
@@ -148,7 +148,7 @@ export function AttackLab({ writId, ledgerRefusals }: { writId: string | null; l
             <h3 className="text-xl font-bold tracking-tight">Blocked timeline</h3>
             <span
               className="rounded-[var(--radius-pill)] px-2.5 py-1 text-xs font-semibold"
-              style={{ color: "var(--status-success)", background: "rgb(var(--refund-rgb) / 0.1)" }}
+              style={{ color: "var(--status-success-ink)", background: "rgb(var(--refund-rgb) / 0.1)" }}
             >
               {blocked.length} refused · 0 executed
             </span>

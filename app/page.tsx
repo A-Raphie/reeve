@@ -58,7 +58,7 @@ function StatusReadout({ live }: { live: boolean }) {
     <div className="grid grid-cols-2 gap-x-6 gap-y-2 border-t border-[color:var(--border-default)] px-6 py-3">
       <div>
         <div className="micro" style={{ fontSize: "0.625rem" }}>this writ</div>
-        <div className="serial" style={{ color: live ? "var(--status-success)" : "var(--text-muted)" }}>
+        <div className="serial" style={{ color: live ? "var(--status-success-ink)" : "var(--text-muted)" }}>
           {live ? "IN FORCE" : "SPECIMEN"}
         </div>
       </div>
@@ -189,10 +189,10 @@ export default function Landing() {
       <header className="border-b border-[color:var(--border-default)]">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <span className="text-lg font-bold tracking-tight">Reeve</span>
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-4">
             <ChainBits as="header" short={CHAIN_SHORT} origin={CHAIN_ORIGIN} />
             <Link href="/lab" className="micro hidden sm:inline underline decoration-[color:var(--border-strong)] hover:decoration-[color:var(--text-primary)]">Security Lab</Link>
-            <a href="#desk" className="btn btn-primary px-4 text-sm sm:px-5 sm:text-base">Open the desk</a>
+            <a href="#desk" className="btn btn-primary shrink-0 px-3 text-sm sm:px-5 sm:text-base">Open the desk</a>
           </div>
         </div>
       </header>
@@ -317,7 +317,7 @@ export default function Landing() {
             {STEPS.map((s) => (
               <div>
                 <div className="card card-hover h-full p-6">
-                  <span style={{ color: "var(--accent-press)" }}>◆</span>
+                  <span style={{ color: "var(--accent)" }} aria-hidden>◆</span>
                   <span className="serial ml-2" style={{ color: "var(--text-muted)" }}>{s.n}</span>
                   <h3 className="mt-3 text-xl font-semibold tracking-tight">{s.title}</h3>
                   <p className="caption mt-3 text-pretty">{s.body}</p>
@@ -331,9 +331,9 @@ export default function Landing() {
           <p className="micro mt-12">For machines · agents hire agents through escrow</p>
           <div className="code-block mt-3">
             <span className="c-dim">{"// ERC-8183: one agent hires another, escrow holds the budget"}</span>{"\n"}
-            <span className="c-accent">const</span> job = <span className="c-accent">await</span> hireErc8183Agent(session, {"{"} task: <span style={{ color: "var(--accent-press)" }}>"rebalance my PCS position"</span>, budget: 10n {"}"}){"\n"}
+            <span className="c-accent">const</span> job = <span className="c-accent">await</span> hireErc8183Agent(session, {"{"} task: <span style={{ color: "var(--text-primary)" }}>"rebalance my PCS position"</span>, budget: 10n {"}"}){"\n"}
             <span className="c-dim">{"// settle when the deliverable checks out · dispute when it does not"}</span>{"\n"}
-            <span className="c-accent">await</span> settleErc8183Job(session, {"{"} jobId: job.jobId, action: <span style={{ color: "var(--accent-press)" }}>"approve"</span> {"}"})
+            <span className="c-accent">await</span> settleErc8183Job(session, {"{"} jobId: job.jobId, action: <span style={{ color: "var(--text-primary)" }}>"approve"</span> {"}"})
           </div>
         </section>
 
@@ -425,7 +425,7 @@ export default function Landing() {
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <div>
               <div className="card h-full p-6">
-                <span className="micro" style={{ color: "var(--status-success)" }}>✓ · A signed writ lets an agent</span>
+                <span className="micro" style={{ color: "var(--status-success-ink)" }}>✓ · A signed writ lets an agent</span>
                 <ul className="mt-4 space-y-3">
                   {[
                     "Spend up to your daily cap, and not one unit more",
@@ -434,7 +434,7 @@ export default function Landing() {
                     "Prove every action with a receipt you can inspect",
                   ].map((t) => (
                     <li key={t} className="flex gap-3 text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
-                      <span style={{ color: "var(--status-success)" }}>·</span>{t}
+                      <span style={{ color: "var(--status-success-ink)" }}>·</span>{t}
                     </li>
                   ))}
                 </ul>
@@ -470,7 +470,7 @@ export default function Landing() {
                 <summary className="group flex cursor-pointer list-none items-start gap-3 text-base font-semibold tracking-tight marker:hidden">
                   <span
                     className="serial mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center transition-transform duration-200 group-hover:scale-110 [[open]>&]:rotate-45"
-                    style={{ color: "var(--accent-press)" }}
+                    style={{ color: "var(--text-secondary)" }}
                   >
                     +
                   </span>

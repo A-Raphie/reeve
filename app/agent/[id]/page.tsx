@@ -6,6 +6,8 @@ import { chainConfig } from "@/lib/chain-runtime";
 import { Clause, CountUp, LiveDial, StatusChip } from "@/components/kit";
 import { ReceiptRow } from "@/components/receipt-row";
 import { RevokeButton } from "@/components/revoke-button";
+import { LedgerFilter } from "@/components/ledger-filter";
+import { LedgerList } from "@/components/ledger-list";
 import { WritBuilder } from "@/components/writ-builder";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -65,6 +67,12 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
       </header>
 
       <main className="mx-auto relative w-full max-w-6xl flex-1 px-6">
+        <a
+          href="#ledger"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-4 focus:z-50 focus:rounded-[var(--radius-input)] focus:bg-[color:var(--bg-surface)] focus:px-3 focus:py-2"
+        >
+          Skip to receipt ledger
+        </a>
         <span className="corner-serial hidden sm:block">REEVE/{agent.id.toUpperCase()} · {writ ? writ.id : "NO-WRIT"}</span>
         {/* Identity + measured record */}
         <section className="grid gap-12 py-16 lg:grid-cols-[1fr_1fr]">
@@ -88,7 +96,7 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
               <ul className="mt-3 space-y-2">
                 {agent.established.map((e) => (
                   <li key={e} className="flex gap-2 text-sm text-pretty" style={{ color: "var(--text-primary)" }}>
-                    <span style={{ color: "var(--status-success)" }}>·</span>{e}
+                    <span style={{ color: "var(--status-success-ink)" }}>·</span>{e}
                   </li>
                 ))}
               </ul>
@@ -205,8 +213,17 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
                       </div>
                     </Clause>
                     <Clause n="III" title="Expiry">
-                      <div className="serial">
-                        {new Date(writ.expiry * 1000).toISOString().slice(0, 16).replace("T", " ")} UTC · revocable at any moment
+                      <div className="flex flex-wrap items-center gap-4">
+                        <LiveDial
+                          label="Time left"
+                          used={Math.max(0, Math.floor((writ.expiry * 1000 - Date.now()) / 86400000))}
+                          cap={Math.max(1, Math.ceil((writ.expiry * 1000 - new Date(writ.grantedAt).getTime()) / 86400000))}
+                          ink="principal"
+                          format={(n) => `${n}d`}
+                        />
+                        <div className="serial">
+                          ends {new Date(writ.expiry * 1000).toISOString().slice(0, 16).replace("T", " ")} UTC · revocable at any moment
+                        </div>
                       </div>
                     </Clause>
                     <div className="flex items-center justify-between border-t border-[color:var(--border-default)] px-6 py-3">
@@ -237,14 +254,17 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
           </div>
 
           {/* Receipt ledger */}
-          <div>
+          <div id="ledger">
             <span className="micro">Receipt ledger</span>
             <h2 className="mt-3 text-2xl font-bold tracking-tight">Everything it does, receipted</h2>
-            <div className="desk-grid mt-5">
+            <LedgerFilter />
+            <p className="caption mt-2"><span id="ledger-count">{receipts.length} of {receipts.length} receipts</span> · click a row to expand</p>
+            <LedgerList>
+            <div className="desk-grid mt-3" id="ledger-rows">
               {receipts.length > 0 ? (
-                receipts.slice(0, 12).map((r, i) => (
+                receipts.map((r, i) => (
+                  <div key={i} data-kind={r.kind} style={{ display: "contents" }}>
                   <ReceiptRow
-                    key={i}
                     ts={new Date(r.ts).toISOString().slice(11, 16)}
                     summary={r.summary}
                     detail={r.detail}
@@ -253,9 +273,10 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
                     status={r.status}
                     kind={r.kind}
                   />
+                  </div>
                 ))
               ) : (
-                <div className="desk-cell py-8 text-center">
+                <div className="desk-cell py-8 text-center" id="ledger-empty-fallback">
                   <p className="caption text-pretty">
                     No receipts yet.{" "}
                     {writ
@@ -264,6 +285,12 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
                   </p>
                 </div>
               )}
+            </div>
+            </LedgerList>
+            <div className="desk-grid mt-3" id="ledger-empty" style={{ display: "none" }}>
+              <div className="desk-cell py-8 text-center">
+                <p className="caption">No receipts match. Clear the search or pick another kind.</p>
+              </div>
             </div>
             {writ && (
               <p className="caption mt-3 text-pretty">
@@ -274,17 +301,24 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
           </div>
         </section>
 
-        {/* Machine surface: honest availability note until cutover */}
+        {/* Machine surface: worked example per agent */}
         <section className="border-t border-[color:var(--border-default)] py-16">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
             <h2 className="text-2xl font-bold tracking-tight">For machines: hire this agent</h2>
             <StatusChip status="pending" label="opens at cutover" />
           </div>
           <p className="caption mt-4 max-w-[680px] text-pretty">
-            Agents hire agents through ERC-8183 escrow: createJob, fund, submit,
-            settle, with approve or dispute at the end. The machine path activates
-            alongside mainnet; until then the human path above is the way in.
+            {agent.machineBlurb} The escrow contract holds the budget and only
+            releases it when the deliverable checks out — approve or dispute at
+            the end. The machine path activates alongside mainnet; until then
+            the human path above is the way in.
           </p>
+          <div className="code-block mt-4">
+            <span className="c-dim">{"// hire " + agent.id + " through ERC-8183 escrow"}</span>{"\n"}
+            <span className="c-accent">const</span> job = <span className="c-accent">await</span> hireErc8183Agent(session, {"{"} task: <span style={{ color: "var(--text-primary)" }}>"{agent.machineTask}"</span>, budget: 10n {"}"}){"\n"}
+            <span className="c-dim">{"// the Keystore checks every agent-side call against its own session"}</span>{"\n"}
+            <span className="c-accent">await</span> settleErc8183Job(session, {"{"} jobId: job.jobId, action: <span style={{ color: "var(--text-primary)" }}>"approve"</span> {"}"})
+          </div>
         </section>
       </main>
 

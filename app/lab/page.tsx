@@ -29,6 +29,12 @@ export default function SecurityLab() {
       </header>
 
       <main className="mx-auto relative w-full max-w-6xl flex-1 px-6">
+        <a
+          href="#attacks"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-4 focus:z-50 focus:rounded-[var(--radius-input)] focus:bg-[color:var(--bg-surface)] focus:px-3 focus:py-2"
+        >
+          Skip to attacks
+        </a>
         <span className="corner-serial hidden sm:block">REEVE/LAB · {writ ? writ.id : "NO-WRIT"} · {CHAIN_SHORT === "BSC MAINNET" ? "BSC-M" : "BSC-T"}</span>
         <section className="pb-10 pt-12">
           <span className="micro">Security Lab · live onchain</span>
@@ -37,7 +43,7 @@ export default function SecurityLab() {
           </h1>
         </section>
 
-        <section className="pb-16">
+        <section id="attacks" className="scroll-mt-20 pb-16">
           <AttackLab writId={writ ? writ.id : null} ledgerRefusals={labRefusals} />
         </section>
 

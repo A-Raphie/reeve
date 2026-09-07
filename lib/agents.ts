@@ -13,6 +13,8 @@ export type Agent = {
   writPlain: string;
   scopes: string[];
   job: string;
+  machineBlurb: string;
+  machineTask: string;
   established: string[];
   notEstablished: string[];
   defaultCap: number;
@@ -30,6 +32,8 @@ export const AGENTS: Record<AgentId, Agent> = {
     writTitle: "LP management",
     writPlain: "Move your PancakeSwap position and swap between its two tokens. Nothing else.",
     job: "Keep my LP earning in range.",
+    machineBlurb: "A rebalancer client posts its range state; the agent re-mints out-of-range liquidity inside its cap.",
+    machineTask: "rebalance my PCS position into range",
     established: [
       "Wallet live on BNB Smart Chain and funded",
       "Session authority proven end to end: grant, agent-side execute, revoke (tx receipts)",
@@ -54,6 +58,8 @@ export const AGENTS: Record<AgentId, Agent> = {
     writTitle: "Grid trading",
     writPlain: "Buy and sell one token pair, a little at a time. Nothing else.",
     job: "Turn chop into filled orders.",
+    machineBlurb: "A grid client funds the ladder quote; the agent places and recycles grid levels inside its cap.",
+    machineTask: "run a 5-level grid on this pair",
     established: [
       "Wallet live on BNB Smart Chain and funded",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
@@ -77,6 +83,8 @@ export const AGENTS: Record<AgentId, Agent> = {
     writTitle: "Supply routing",
     writPlain: "Move your spare USDT to whichever lender pays more, and back. Nothing else.",
     job: "Keep my USDT at the best APR on BNB Chain.",
+    machineBlurb: "A treasury client deposits USDT; the agent routes it to the best supply APR inside its cap.",
+    machineTask: "keep my USDT at the best APR",
     established: [
       "Wallet live on BNB Smart Chain and funded",
       "Session authority proven end to end: grant, agent-side execute, revoke (tx receipts)",
@@ -101,6 +109,8 @@ export const AGENTS: Record<AgentId, Agent> = {
     writTitle: "Liquidation guard",
     writPlain: "If your loan gets close to liquidation, pay part of it down to keep it safe. Nothing else.",
     job: "Stop my loan from liquidating.",
+    machineBlurb: "A borrower registers its loan; the guard repays the minimum to restore safety inside its cap.",
+    machineTask: "guard my Venus loan above 1.5",
     established: [
       "Wallet live on BNB Smart Chain and funded",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
