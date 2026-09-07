@@ -87,75 +87,6 @@ export function LiveDial({
   );
 }
 
-export function ReceiptRow({
-  ts,
-  summary,
-  detail,
-  txHash,
-  explorerTx,
-  status,
-}: {
-  ts: string;
-  summary: string;
-  detail?: string;
-  txHash?: string;
-  explorerTx?: string;
-  status: Status;
-}) {
-  return (
-    <div className="desk-cell grid grid-cols-[7rem_1fr_auto] items-center gap-3 last:border-b-0">
-      <span className="serial" style={{ color: "var(--text-muted)" }}>
-        {ts}
-      </span>
-      <span className="truncate text-sm" style={{ color: "var(--text-primary)" }}>
-        {summary}
-        {detail ? (
-          <span className="caption"> · {detail}</span>
-        ) : null}
-      </span>
-      <span className="flex items-center gap-3">
-        {txHash && explorerTx ? (
-          <a
-            href={explorerTx}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="serial underline decoration-[color:var(--border-strong)] hover:decoration-[color:var(--text-primary)]"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            {txHash.slice(0, 10)}…
-          </a>
-        ) : null}
-        <StatusChip status={status} label={status === "pass" ? "done" : status === "fail" ? "refused" : "pending"} />
-      </span>
-    </div>
-  );
-}
-
-/* Clause numbering in roman, employment-contract voice (design.md copy tone) */
-export function Clause({
-  n,
-  title,
-  children,
-}: {
-  n: string;
-  title: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className="border-t border-[color:var(--border-default)] px-5 py-4 first:border-t-0">
-      <div className="flex items-baseline gap-3">
-        <span className="serial" style={{ color: "var(--text-muted)" }}>
-          {n}.
-        </span>
-        <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
-          {title}
-        </span>
-      </div>
-      <div className="mt-2 pl-7">{children}</div>
-    </div>
-  );
-}
-
 /* Structured rejection (beui/Clasp grammar): a refusal is the system working,
    so it renders as a machine-readable card with the cited clause, never as an error. */
 export function RefusalCard({
@@ -198,5 +129,30 @@ export function CountUp({ value, className }: { value: number; className?: strin
     >
       {value}
     </span>
+  );
+}
+
+/* Clause numbering in roman, employment-contract voice (design.md copy tone) */
+export function Clause({
+  n,
+  title,
+  children,
+}: {
+  n: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="border-t border-[color:var(--border-default)] px-5 py-4 first:border-t-0">
+      <div className="flex items-baseline gap-3">
+        <span className="serial" style={{ color: "var(--text-muted)" }}>
+          {n}.
+        </span>
+        <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+          {title}
+        </span>
+      </div>
+      <div className="mt-2 pl-7">{children}</div>
+    </div>
   );
 }

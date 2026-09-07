@@ -42,6 +42,7 @@ type Result = {
 
 export function AttackLab({ writId, ledgerRefusals }: { writId: string | null; ledgerRefusals: number }) {
   const [running, setRunning] = useState<AttackId | null>(null);
+  const [netError, setNetError] = useState<string | null>(null);
   const [blocked, setBlocked] = useState<Result[]>([]);
   const [wrote, setWrote] = useState(false); // an attack executed without refusal = boundary failed
 
@@ -62,8 +63,10 @@ export function AttackLab({ writId, ledgerRefusals }: { writId: string | null; l
       } else {
         setWrote(true);
       }
-    } catch {
-      // network failure: nothing was refused, nothing to show — leave the row idle
+    } catch (e) {
+      setNetError(
+        `The attack request failed before reaching the chain (${(e instanceof Error ? e.message : String(e)).slice(0, 100)}). Nothing was refused and nothing is hidden — retry the button.`,
+      );
     } finally {
       setRunning(null);
     }
@@ -82,7 +85,7 @@ export function AttackLab({ writId, ledgerRefusals }: { writId: string | null; l
 
   return (
     <div>
-      <div className="mt-8 grid grid-cols-3 gap-4">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div className="record-panel">
           <div className="number-lg">{ledgerRefusals + blocked.length}</div>
           <div className="micro mt-1">attacks refused</div>
@@ -125,6 +128,12 @@ export function AttackLab({ writId, ledgerRefusals }: { writId: string | null; l
           );
         })}
       </div>
+
+      {netError && (
+        <p className="caption mt-6" style={{ color: "var(--status-error)" }} role="alert">
+          {netError}
+        </p>
+      )}
 
       {wrote && (
         <p className="caption mt-6" style={{ color: "var(--status-error)" }} role="alert">

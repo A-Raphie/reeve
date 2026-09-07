@@ -17,7 +17,7 @@
   /* Text tiers: exactly three */
   --text-primary: #14161a;
   --text-secondary: #5a5e66;
-  --text-muted: #8a8e96;
+  --text-muted: #666a73; /* P2-1: was #8a8e96 at 2.88:1 — #666a73 computes 4.75:1 on the field, 5.42:1 on white */
 
   /* Border scale: hairline grid discipline, shadows banned (design.md) */
   --border-default: rgba(20, 22, 26, 0.14);
@@ -349,12 +349,14 @@ body {
 
 /* Word-by-word tagline activation (landing B11): muted until .active lands */
 .reveal-word {
-  color: rgb(var(--ink-rgb) / 0.28);
+  color: var(--text-primary); /* P2-2: legible by default; dimming only under .reveal-armed */
   transition: color 700ms cubic-bezier(0.32, 0.72, 0, 1);
 }
-.reveal-word.active {
-  color: var(--text-primary);
+.reveal-armed .reveal-word {
+  color: rgb(var(--ink-rgb) / 0.28);
 }
+.reveal-armed 
+
 
 .input {
   background: var(--bg-surface);

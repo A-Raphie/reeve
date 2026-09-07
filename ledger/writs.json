@@ -41,7 +41,9 @@
     "expiry": 1789289897,
     "grantTx": "0x83085407b47ff8f5c92a9254294f033c65a029923276fa08aebb3a72fff16738",
     "explorerTx": "https://testnet.bscscan.com/tx/0x83085407b47ff8f5c92a9254294f033c65a029923276fa08aebb3a72fff16738",
-    "status": "in force",
-    "grantedAt": "2026-09-06T08:58:37.453Z"
+    "status": "void",
+    "grantedAt": "2026-09-06T08:58:37.453Z",
+    "revokedAt": "2026-09-07T11:01:34.943Z",
+    "revokeTx": "0x115cb5f0273bd10d4c2e15f8f488f608f299413f9bebbdac5ca8e9d240dee946"
   }
 ]

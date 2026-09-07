@@ -3,7 +3,9 @@ import { AGENTS, AGENT_LIST, type AgentId } from "@/lib/agents";
 import { readReceipts, writFor } from "@/lib/ledger";
 import { chainConfig } from "@/lib/chain-runtime";
 
-import { Clause, CountUp, LiveDial, ReceiptRow, StatusChip } from "@/components/kit";
+import { Clause, CountUp, LiveDial, StatusChip } from "@/components/kit";
+import { ReceiptRow } from "@/components/receipt-row";
+import { RevokeButton } from "@/components/revoke-button";
 import { WritBuilder } from "@/components/writ-builder";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -117,7 +119,7 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
           <div>
             <span className="micro">Measured record</span>
             <div className="record-panel mt-4">
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div>
                   <CountUp value={actions} className="block text-7xl font-bold tracking-[-0.04em] tabular-nums" />
                   <div className="micro mt-2">{actions === 1 ? "action taken" : "actions taken"}</div>
@@ -225,6 +227,7 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
                       )}
                       <StatusChip status="pass" label="in force" />
                     </div>
+              <RevokeButton writId={writ.id} agentName={agent.name} />
                   </div>
                 </div>
               ) : (
@@ -248,6 +251,7 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
                     txHash={r.txHash}
                     explorerTx={r.txHash ? EXPLORER_TX(r.txHash) : undefined}
                     status={r.status}
+                    kind={r.kind}
                   />
                 ))
               ) : (

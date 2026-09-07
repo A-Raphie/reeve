@@ -223,8 +223,9 @@ export default function Landing() {
             </h1>
             <p className="caption mt-6 max-w-[680px] text-lg text-pretty">
               Four live DeFi agents: rebalancing, grid trading, yield, liquidation
-              guard. You sign the limits they operate under, escrow settles the
-              job, and the track record is measured, not promised.
+              guard. You sign the limits they operate under, every action is
+              receipted against your writ, and the track record is measured,
+              not promised.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="#desk" className="btn btn-primary">Open the desk</a>
@@ -293,7 +294,7 @@ export default function Landing() {
               </p>
               <p className="text-sm leading-6" style={{ color: "var(--text-primary)" }}>
                 Reeve moves the boundary onchain. The writ, the limits, the
-                actions, and the refusals are all public and hash-committed, and
+                actions, and the refusals are all public and receipted, and
                 the Keystore enforces the outcome.
               </p>
             </div>

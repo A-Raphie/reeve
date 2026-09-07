@@ -9,7 +9,8 @@ export function TaglineReveal({ text, className }: { text: string; className?: s
   const ref = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || typeof IntersectionObserver === "undefined") return; // P2-2: content stays legible without IO
+    el.classList.add("reveal-armed");
     const words = Array.from(el.querySelectorAll<HTMLElement>(".reveal-word"));
     const io = new IntersectionObserver(
       (entries) => {

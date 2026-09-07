@@ -136,7 +136,7 @@ export function WritBuilder({ agent }: { agent: Agent }) {
           <button onClick={sign} disabled={phase === "signing"} className="btn btn-primary w-full">
             {phase === "signing"
               ? "Registering the session onchain…"
-              : `Sign the writ · cap ${cap} USDT · ${days} days`}
+              : `Sign the writ · cap ${cap} tBNB · ${days} days`}
           </button>
           <p className="caption mt-3 text-pretty">
             Signing locks these rules onchain with the demo operator key and
