@@ -1,0 +1,104 @@
+{
+  "generatedAt": "2026-09-07T21:37:55.875Z",
+  "tasks": {
+    "T1": {
+      "id": "T1",
+      "name": "Which Venus pool pays the best USDT supply APR right now?",
+      "category": "Yield Optimisation (DeFi)",
+      "runs": [
+        {
+          "path": "agent",
+          "via": "yield agent hired under writ RW-MTP3WFMY (Altana session, clause I allowlist + clause II cap)",
+          "ms": 2328,
+          "costNative": 0,
+          "output": {
+            "best": {
+              "pool": "Venus GameFi",
+              "apr": 0.28331822458079997
+            },
+            "board": [
+              {
+                "pool": "Venus DeFi",
+                "supplyAprPct": 0.000011,
+                "borrowAprPct": 0.300062
+              },
+              {
+                "pool": "Venus GameFi",
+                "supplyAprPct": 0.283318,
+                "borrowAprPct": 0.853347
+              },
+              {
+                "pool": "Venus StableCoins",
+                "supplyAprPct": 0.000001,
+                "borrowAprPct": 0.001562
+              }
+            ],
+            "decision": "route",
+            "reason": "Venus GameFi pays 0.2833% vs Venus StableCoins 0.0000% · re-supply under writ"
+          }
+        },
+        {
+          "path": "diy",
+          "via": "manual one-off: raw eth_call to each market's supplyRatePerBlock, APR computed by hand",
+          "ms": 593,
+          "costNative": 0,
+          "output": {
+            "best": {
+              "pool": "Venus GameFi",
+              "supplyAprPct": 0.283318
+            },
+            "board": [
+              {
+                "pool": "Venus DeFi",
+                "supplyAprPct": 0.000011
+              },
+              {
+                "pool": "Venus GameFi",
+                "supplyAprPct": 0.283318
+              },
+              {
+                "pool": "Venus StableCoins",
+                "supplyAprPct": 0.000001
+              }
+            ],
+            "decision": "none: a manual check answers once and is stale the next block"
+          }
+        }
+      ],
+      "ranAt": "2026-09-07T21:37:23.242Z"
+    },
+    "T3": {
+      "id": "T3",
+      "name": "Stop an out-of-scope spend before it happens",
+      "category": "Security (writ enforcement)",
+      "runs": [
+        {
+          "path": "agent",
+          "via": "out-of-scope send attempted through writ RW-MTP3WFMY (Keystore-registered session)",
+          "ms": 1939,
+          "costNative": 0,
+          "output": {
+            "executed": false,
+            "wasRefused": true,
+            "result": "CHAIN REFUSED THE CALL: An error occurred while executing calls.\n\nReason: UnauthorizedCall\n\nDetails: UnauthorizedCall(UnauthorizedCall { keyHash: 0xb8b03a375436900e033c3e45befacbeb920a62b5f67208b67482e32758869813, target: 0x",
+            "stranger": "0x000000000000000000000000000000000000dEaD",
+            "enforcement": "onchain, by the Keystore: UnauthorizedCall revert, nothing moved"
+          }
+        },
+        {
+          "path": "diy",
+          "via": "same out-of-scope send attempted by hand from a bare wallet: no permission layer exists to stop it",
+          "ms": 5414,
+          "costNative": 0.0000021,
+          "output": {
+            "executed": true,
+            "result": "THE CALL JUST EXECUTED: tx 0x5544d7b29e7302badb4a18e250d99ab35a45d8b0a88b8a62c66b5d4759571897 (success). Nobody stopped it, because nothing was asked.",
+            "stranger": "0x000000000000000000000000000000000000dEaD",
+            "enforcement": "none: a bare wallet has no allowlist, no cap, no expiry"
+          }
+        }
+      ],
+      "ranAt": "2026-09-07T21:38:04.507Z"
+    }
+  }
+}

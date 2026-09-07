@@ -6,6 +6,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { rpc } from "./engines/rpc.mjs";
 import { guardCheck, guardSummary } from "./engines/guard.mjs";
 import { rebalancerCheck, rebalancerSummary } from "./engines/rebalancer.mjs";
+import { yieldSweep, yieldSummary } from "./engines/yield.mjs";
 
 const AGENT = process.argv[2] ?? "yield";
 const AGENTS = {
@@ -44,6 +45,9 @@ try {
   } else if (AGENT === "rebalancer") {
     check = await rebalancerCheck(a.address);
     rendered = rebalancerSummary(check, balance);
+  } else if (AGENT === "yield") {
+    check = await yieldSweep();
+    rendered = yieldSummary(check, balance);
   } else {
     // Grid and Yield engines land with their first funded positions; the
     // balance check still proves the round ran.
