@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://reeve-hq.vercel.app"),
+  metadataBase: new URL("https://reeve-hq-303.netlify.app"),
   title: "Reeve · Hire agents under a writ of limits",
   description:
     "The agent marketplace where every hire is an onchain employment contract: a signed writ of limits, escrowed jobs, and a measured track record. Four live DeFi agents on BNB Chain.",
