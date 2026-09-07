@@ -38,6 +38,7 @@ export const AGENTS: Record<AgentId, Agent> = {
       "Wallet live on BNB Smart Chain and funded",
       "Session authority proven end to end: grant, agent-side execute, revoke (tx receipts)",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
+      "Strategy engine live: real PancakeSwap V3 USDT/WBNB pool reads every round (slot0 price, tick, position count)",
     ],
     notEstablished: [
       "No LP position under management yet · the first position opens when a writ is signed",
@@ -114,6 +115,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     established: [
       "Wallet live on BNB Smart Chain and funded",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
+      "Strategy engine live: real Venus DeFi-pool reads every round (comptroller liquidity, collateral factor, position state)",
     ],
     notEstablished: [
       "No protected position yet · the guard only acts under a writ on a real loan",
