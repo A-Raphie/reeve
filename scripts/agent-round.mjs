@@ -7,6 +7,7 @@ import { rpc } from "./engines/rpc.mjs";
 import { guardCheck, guardSummary } from "./engines/guard.mjs";
 import { rebalancerCheck, rebalancerSummary } from "./engines/rebalancer.mjs";
 import { yieldSweep, yieldSummary } from "./engines/yield.mjs";
+import { mainnetSnapshot, mainnetLine } from "./engines/mainnet.mjs";
 
 const AGENT = process.argv[2] ?? "yield";
 const AGENTS = {
@@ -53,8 +54,16 @@ try {
     // balance check still proves the round ran.
     check = null;
   }
+  // Free mainnet reads ride along with every engine round; actions stay on
+  // testnet under writs and the receipt says so.
+  let mn = "";
+  try {
+    mn = mainnetLine(await mainnetSnapshot());
+  } catch {
+    mn = "";
+  }
   const summary = check
-    ? `${rendered.summary}${writBit}`
+    ? `${rendered.summary}${mn}${writBit}`
     : writ
       ? `Round complete: HOLD · balance ${balance.toFixed(4)} tBNB${writBit}`
       : `Round complete: IDLE · balance ${balance.toFixed(4)} tBNB${writBit}`;
