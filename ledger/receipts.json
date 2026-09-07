@@ -3,160 +3,160 @@
     "ts": "2026-09-05T19:04:06.802Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0008 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0008 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T00:33:50.426Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0008 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0008 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T00:34:35.496Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0008 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0008 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T00:34:35.728Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T00:34:35.917Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T00:34:36.279Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T01:19:30.494Z",
     "agent": "yield",
     "kind": "refusal",
-    "summary": "Refused: send to 0x00000000\u2026 is outside clause I \u00b7 the writ only allows its listed calls",
+    "summary": "Refused: send to 0x00000000… is outside clause I · the writ only allows its listed calls",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T01:19:31.179Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0960 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0960 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T04:55:42.534Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0960 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0960 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T04:55:42.843Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T04:55:43.116Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T04:55:43.317Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T09:05:59.893Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0960 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0960 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T09:06:00.119Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T09:06:00.370Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T09:06:00.680Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:31:30.106Z",
     "agent": "yield",
     "kind": "refusal",
-    "summary": "Refused: Send the agent's balance to a stranger \u00b7 UnauthorizedCall",
-    "detail": "clause I \u00b7 What it may do (allowlist) \u00b7 UnauthorizedCall",
+    "summary": "Refused: Send the agent's balance to a stranger · UnauthorizedCall",
+    "detail": "clause I · What it may do (allowlist) · UnauthorizedCall",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:31:49.789Z",
     "agent": "yield",
     "kind": "refusal",
-    "summary": "Refused: Spend 0.06 past a 0.05 daily cap \u00b7 ExceededSpendLimit",
-    "detail": "clause II \u00b7 Daily spend cap \u00b7 ExceededSpendLimit",
+    "summary": "Refused: Spend 0.06 past a 0.05 daily cap · ExceededSpendLimit",
+    "detail": "clause II · Daily spend cap · ExceededSpendLimit",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:32:14.840Z",
     "agent": "yield",
     "kind": "refusal",
-    "summary": "Refused: Call through a revoked session \u00b7 SESSION_REVOKED",
-    "detail": "clause III \u00b7 Revocation is instant \u00b7 SESSION_REVOKED",
+    "summary": "Refused: Call through a revoked session · SESSION_REVOKED",
+    "detail": "clause III · Revocation is instant · SESSION_REVOKED",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:32:16.795Z",
     "agent": "yield",
     "kind": "refusal",
-    "summary": "Refused: Call through an expired session \u00b7 SESSION_EXPIRED",
-    "detail": "clause III \u00b7 Expiry \u00b7 SESSION_EXPIRED (chain reverted an expired-session call)",
+    "summary": "Refused: Call through an expired session · SESSION_EXPIRED",
+    "detail": "clause III · Expiry · SESSION_EXPIRED (chain reverted an expired-session call)",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:35:08.927Z",
     "agent": "yield",
     "kind": "refusal",
-    "summary": "Refused: Call through a revoked session \u00b7 SESSION_REVOKED",
-    "detail": "clause III \u00b7 Revocation is instant \u00b7 SESSION_REVOKED",
+    "summary": "Refused: Call through a revoked session · SESSION_REVOKED",
+    "detail": "clause III · Revocation is instant · SESSION_REVOKED",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:35:10.834Z",
     "agent": "yield",
     "kind": "refusal",
-    "summary": "Refused: Call through an expired session \u00b7 SESSION_EXPIRED",
-    "detail": "clause III \u00b7 Expiry \u00b7 SESSION_EXPIRED (chain reverted an expired-session call)",
+    "summary": "Refused: Call through an expired session · SESSION_EXPIRED",
+    "detail": "clause III · Expiry · SESSION_EXPIRED (chain reverted an expired-session call)",
     "status": "pass"
   },
   {
@@ -164,231 +164,231 @@
     "agent": "yield",
     "kind": "refusal",
     "status": "pass",
-    "summary": "Refused: Call through a revoked session \u00b7 SESSION_REVOKED",
-    "detail": "clause III \u00b7 Revocation is instant \u00b7 SESSION_REVOKED"
+    "summary": "Refused: Call through a revoked session · SESSION_REVOKED",
+    "detail": "clause III · Revocation is instant · SESSION_REVOKED"
   },
   {
     "ts": "2026-09-06T12:52:26.500Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:52:26.824Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:52:27.149Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T12:52:27.344Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T15:55:01.640Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T15:55:01.837Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T15:55:02.075Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T15:55:02.298Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T17:54:54.274Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T17:54:54.507Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T17:54:54.675Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T17:54:54.832Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T19:49:31.075Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T19:49:31.291Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T19:49:31.491Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T19:49:31.782Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T21:52:04.683Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T21:52:04.877Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T21:52:05.179Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T21:52:05.435Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T23:22:42.085Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T23:22:42.242Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T23:22:42.514Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-06T23:22:42.714Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T01:09:43.834Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T01:09:44.115Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T01:09:44.313Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T01:09:44.512Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T06:04:04.199Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T06:04:04.464Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T06:04:04.739Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T06:04:05.069Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0004 tBNB \u00b7 writ RW-MTPKXPN0 in force",
+    "summary": "Round complete: HOLD · balance 0.0004 tBNB · writ RW-MTPKXPN0 in force",
     "status": "pass"
   },
   {
@@ -396,122 +396,152 @@
     "agent": "guard",
     "kind": "revocation",
     "status": "pass",
-    "summary": "Revoked: writ RW-MTPKXPN0 void onchain \u2014 all guard authority ends",
-    "detail": "revoke tx 0x115cb5f0273bd10d\u2026 \u00b7 Keystore key deleted, session dead"
+    "summary": "Revoked: writ RW-MTPKXPN0 void onchain — all guard authority ends",
+    "detail": "revoke tx 0x115cb5f0273bd10d… · Keystore key deleted, session dead"
   },
   {
     "ts": "2026-09-07T12:25:34.478Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T12:25:34.682Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T12:25:34.962Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T12:25:35.182Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T17:48:45.601Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T17:48:45.737Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T17:48:45.900Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T17:48:46.077Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T20:57:17.666Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T20:57:17.871Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0019 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T20:57:18.226Z",
     "agent": "grid",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T20:57:18.430Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: IDLE \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T21:29:13.837Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 Venus no position \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
-    "detail": "Venus Isolated Pools \u00b7 StableCoins \u00b7 supply 0.00 borrow 0.00 \u00b7 CF 0 \u00b7 comptroller 0x10b57706\u2026",
+    "summary": "Round complete: HOLD · Venus no position · balance 0.0004 tBNB · no writ in force, no action authorized",
+    "detail": "Venus Isolated Pools · StableCoins · supply 0.00 borrow 0.00 · CF 0 · comptroller 0x10b57706…",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T21:29:15.691Z",
     "agent": "rebalancer",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 PCS 1 USDT = 9.371e-9 WBNB \u00b7 balance 0.0019 tBNB \u00b7 no writ in force, no action authorized",
-    "detail": "PancakeSwap V3 \u00b7 USDT/WBNB 0.25% \u00b7 tick -184866 \u00b7 sqrtPriceX96 7669637528264100701489979 \u00b7 positions 0 \u00b7 no position in scope \u00b7 USDT/WBNB 0.25% pool live at tick -184866",
+    "summary": "Round complete: HOLD · PCS 1 USDT = 9.371e-9 WBNB · balance 0.0019 tBNB · no writ in force, no action authorized",
+    "detail": "PancakeSwap V3 · USDT/WBNB 0.25% · tick -184866 · sqrtPriceX96 7669637528264100701489979 · positions 0 · no position in scope · USDT/WBNB 0.25% pool live at tick -184866",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T21:29:16.826Z",
     "agent": "yield",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 balance 0.0919 tBNB \u00b7 writ RW-MTP3WFMY in force",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
     "status": "pass"
   },
   {
     "ts": "2026-09-07T21:30:27.493Z",
     "agent": "guard",
     "kind": "check",
-    "summary": "Round complete: HOLD \u00b7 Venus no position \u00b7 balance 0.0004 tBNB \u00b7 no writ in force, no action authorized",
-    "detail": "Venus Isolated Pools \u00b7 DeFi \u00b7 supply 0.00 borrow 0.00 \u00b7 CF 0.8 \u00b7 comptroller 0x23a73971\u2026",
+    "summary": "Round complete: HOLD · Venus no position · balance 0.0004 tBNB · no writ in force, no action authorized",
+    "detail": "Venus Isolated Pools · DeFi · supply 0.00 borrow 0.00 · CF 0.8 · comptroller 0x23a73971…",
+    "status": "pass"
+  },
+  {
+    "ts": "2026-09-07T21:31:59.731Z",
+    "agent": "yield",
+    "kind": "check",
+    "summary": "Round complete: HOLD · balance 0.0919 tBNB · writ RW-MTP3WFMY in force",
+    "status": "pass"
+  },
+  {
+    "ts": "2026-09-07T21:31:59.858Z",
+    "agent": "rebalancer",
+    "kind": "check",
+    "summary": "Round complete: HOLD · PCS 1 USDT = 9.371e-9 WBNB · balance 0.0019 tBNB · no writ in force, no action authorized",
+    "detail": "PancakeSwap V3 · USDT/WBNB 0.25% · tick -184866 · sqrtPriceX96 7669637528264100701489979 · positions 0 · no position in scope · USDT/WBNB 0.25% pool live at tick -184866",
+    "status": "pass"
+  },
+  {
+    "ts": "2026-09-07T21:32:00.299Z",
+    "agent": "grid",
+    "kind": "check",
+    "summary": "Round complete: IDLE · balance 0.0004 tBNB · no writ in force, no action authorized",
+    "status": "pass"
+  },
+  {
+    "ts": "2026-09-07T21:32:00.518Z",
+    "agent": "guard",
+    "kind": "check",
+    "summary": "Round complete: HOLD · Venus no position · balance 0.0004 tBNB · no writ in force, no action authorized",
+    "detail": "Venus Isolated Pools · DeFi · supply 0.00 borrow 0.00 · CF 0.8 · comptroller 0x23a73971…",
     "status": "pass"
   }
 ]
