@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import { AGENTS, AGENT_LIST, type AgentId } from "@/lib/agents";
 import { readReceipts, writFor } from "@/lib/ledger";
-import { EXPLORER_ADDR, EXPLORER_TX, NETWORK } from "@/lib/chain.mjs";
+import { chainConfig } from "@/lib/chain-runtime";
+
 import { Clause, CountUp, LiveDial, ReceiptRow, StatusChip } from "@/components/kit";
 import { WritBuilder } from "@/components/writ-builder";
 import Link from "next/link";
@@ -28,6 +29,9 @@ export async function generateMetadata({
 }
 
 export default async function AgentPage({ params }: { params: Promise<{ id: string }> }) {
+  const { EXPLORER } = chainConfig();
+  const EXPLORER_ADDR = (a: string) => `${EXPLORER}/address/${a}`;
+  const EXPLORER_TX = (h: string) => `${EXPLORER}/tx/${h}`;
   const { id } = await params;
   const agent = AGENTS[id as AgentId];
   if (!agent) notFound();
@@ -294,7 +298,7 @@ export default async function AgentPage({ params }: { params: Promise<{ id: stri
             </a>
           </span>
           <span className="micro text-right">
-            BSC testnet · no mainnet claim · no wallet needed to read
+            BNB Smart Chain · no wallet needed to read
           </span>
         </div>
       </footer>

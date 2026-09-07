@@ -1,4 +1,6 @@
-import { CHAIN_LABEL, EXPLORER } from "@/lib/chain.mjs";
+
+import { chainConfig } from "@/lib/chain-runtime";
+import { ChainBits } from "@/components/chain-bits";
 import { liveWrit, readReceipts } from "@/lib/ledger";
 import { Clause, LiveDial, StatusChip } from "@/components/kit";
 import { TaglineReveal } from "@/components/reveal";
@@ -31,14 +33,16 @@ const BENEFITS = [
   { title: "You never lose custody", body: "Sessions are scoped keys on your own wallet. The platform holds nothing." },
 ];
 
-const FAQ = [
-  { q: "Which chain does this run on?", a: "BNB Smart Chain. The build executes on testnet while the agents are arming and cuts over to mainnet when they do; every receipt links to its transaction." },
+function faqRows(chainOrigin: string) {
+  return [
+  { q: "Which chain does this run on?", a: `BNB Smart Chain. ${chainOrigin} Every receipt links to its transaction.` },
   { q: "Do I keep custody of my funds?", a: "Yes. A writ grants a scoped session key on your own wallet: specific calls, a spend cap, an expiry. The platform never holds funds, and you can revoke in one transaction." },
   { q: "What actually stops the agent from overspending?", a: "The Keystore contracts check the writ onchain before the call executes. A call outside the allowlist, or spend past the cap, reverts with the clause that refused it." },
   { q: "What happens when the cap runs out?", a: "The agent's next call is refused onchain and the writ records the refusal. You can raise the cap by signing a fresh writ; the old one stays void." },
   { q: "What does hiring an agent cost?", a: "Gas only. A full grant, execute, and revoke cycle costs a few cents at normal BSC gas prices, and every fee is visible on the receipt." },
   { q: "How is an agent's performance measured?", a: "The Agent Advantage Report runs real tasks with and without the agent and reports time, cost, and output quality, with the actual outputs attached." },
-];
+  ];
+}
 
 function SectionHeader({ num, label }: { num: string; label: string }) {
   return (
@@ -165,13 +169,14 @@ function WritPanel() {
         </span>
       </div>
       <p className="caption mt-3 text-center text-pretty">
-        The first live writ is being granted on testnet. It replaces this specimen the moment it lands.
+        When no live writ is in force, this specimen shows the shape of one. A granted writ replaces it here.
       </p>
     </div>
   );
 }
 
 export default function Landing() {
+  const { CHAIN_LABEL, CHAIN_SHORT, CHAIN_ORIGIN, EXPLORER } = chainConfig();
   const receipts = readReceipts();
   const totalChecks = receipts.filter((r) => r.kind === "check").length;
   const totalActions = receipts.filter((r) => r.kind === "action").length;
@@ -185,7 +190,7 @@ export default function Landing() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <span className="text-lg font-bold tracking-tight">Reeve</span>
           <div className="flex items-center gap-3 sm:gap-4">
-            <span className="micro hidden md:inline">{CHAIN_LABEL}</span>
+            <ChainBits as="header" short={CHAIN_SHORT} origin={CHAIN_ORIGIN} />
             <Link href="/lab" className="micro hidden sm:inline underline decoration-[color:var(--border-strong)] hover:decoration-[color:var(--text-primary)]">Security Lab</Link>
             <a href="#desk" className="btn btn-primary px-4 text-sm sm:px-5 sm:text-base">Open the desk</a>
           </div>
@@ -197,7 +202,7 @@ export default function Landing() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="status-strip-inner">
             <span><span className="live-dot" aria-hidden />LIVE</span>
-            <span>CHAIN · <strong>BSC TESTNET</strong></span>
+            <ChainBits short={CHAIN_SHORT} origin={CHAIN_ORIGIN} />
             <span>AGENTS · <strong>4</strong></span>
             <span>CHECKS · <strong>EVERY 15 MIN</strong></span>
             <span>RECEIPTS · <strong>{receipts.length}</strong></span>
@@ -211,11 +216,7 @@ export default function Landing() {
         <section className="grid items-center gap-16 py-20 lg:grid-cols-[1.05fr_1fr]">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-[color:var(--border-default)] px-3 py-1">
-                <span className="live-dot" aria-hidden />
-                <span className="serial" style={{ color: "var(--text-primary)" }}>TESTNET LIVE · AGENTS ARMING</span>
-              </span>
-              <span className="serial" style={{ color: "var(--text-muted)" }}>mainnet at cutover</span>
+              <ChainBits as="pill" short={CHAIN_SHORT} origin={CHAIN_ORIGIN} />
             </div>
             <h1 className="mt-4 max-w-[680px] text-4xl font-bold leading-[1.05] tracking-[-0.04em] text-balance sm:text-5xl lg:text-6xl">
               Hire agents under a writ of limits.
@@ -378,10 +379,7 @@ export default function Landing() {
               );
             })}
           </div>
-          <p className="caption mt-3 text-pretty">
-            Agents are arming: wallets are live and funded, first writs are being
-            granted on testnet, and records appear as rounds execute.
-          </p>
+          <ChainBits as="origin" short={CHAIN_SHORT} origin={CHAIN_ORIGIN} />
         </section>
 
         {/* 06 / Receipts feed */}
@@ -465,7 +463,8 @@ export default function Landing() {
         <section className="border-t border-[color:var(--border-default)] py-20">
           <SectionHeader num="08" label="Questions" />
           <div className="mt-8 max-w-[680px]">
-            {FAQ.map((f, i) => (
+            {faqRows(CHAIN_ORIGIN).map((f, i) => (
+              // NOTE: the first FAQ row renders the runtime origin via /api/chain (see chain-bits)
               <details key={f.q} open={i === 0} className="border-b border-[color:var(--border-default)] py-4">
                 <summary className="group flex cursor-pointer list-none items-start gap-3 text-base font-semibold tracking-tight marker:hidden">
                   <span
@@ -501,7 +500,7 @@ export default function Landing() {
               Raphie
             </a>
           </span>
-          <span className="micro text-right">BSC testnet · no mainnet claim · nothing asks you to sign until you hire</span>
+          <span className="micro text-right">BNB Smart Chain · nothing asks you to sign until you hire</span>
         </div>
       </footer>
     </div>

@@ -31,7 +31,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     writPlain: "Move your PancakeSwap position and swap between its two tokens. Nothing else.",
     job: "Keep my LP earning in range.",
     established: [
-      "Wallet live on BNB Chain testnet and funded",
+      "Wallet live on BNB Smart Chain and funded",
       "Session authority proven end to end: grant, agent-side execute, revoke (tx receipts)",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
     ],
@@ -55,7 +55,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     writPlain: "Buy and sell one token pair, a little at a time. Nothing else.",
     job: "Turn chop into filled orders.",
     established: [
-      "Wallet live on BNB Chain testnet and funded",
+      "Wallet live on BNB Smart Chain and funded",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
     ],
     notEstablished: [
@@ -78,7 +78,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     writPlain: "Move your spare USDT to whichever lender pays more, and back. Nothing else.",
     job: "Keep my USDT at the best APR on BNB Chain.",
     established: [
-      "Wallet live on BNB Chain testnet and funded",
+      "Wallet live on BNB Smart Chain and funded",
       "Session authority proven end to end: grant, agent-side execute, revoke (tx receipts)",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
     ],
@@ -102,7 +102,7 @@ export const AGENTS: Record<AgentId, Agent> = {
     writPlain: "If your loan gets close to liquidation, pay part of it down to keep it safe. Nothing else.",
     job: "Stop my loan from liquidating.",
     established: [
-      "Wallet live on BNB Chain testnet and funded",
+      "Wallet live on BNB Smart Chain and funded",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
     ],
     notEstablished: [

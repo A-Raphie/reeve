@@ -2,6 +2,7 @@ import Link from "next/link";
 import { liveWrit } from "@/lib/ledger";
 import { AttackLab } from "@/components/attack-lab";
 import { readReceipts } from "@/lib/ledger";
+import { chainConfig } from "@/lib/chain-runtime";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 
 export default function SecurityLab() {
   const writ = liveWrit();
+  const { CHAIN_SHORT } = chainConfig();
   const labRefusals = readReceipts("yield").filter((r) => r.kind === "refusal").length;
 
   return (
@@ -27,7 +29,7 @@ export default function SecurityLab() {
       </header>
 
       <main className="mx-auto relative w-full max-w-6xl flex-1 px-6">
-        <span className="corner-serial hidden sm:block">REEVE/LAB · {writ ? writ.id : "NO-WRIT"} · BSC-T</span>
+        <span className="corner-serial hidden sm:block">REEVE/LAB · {writ ? writ.id : "NO-WRIT"} · {CHAIN_SHORT === "BSC MAINNET" ? "BSC-M" : "BSC-T"}</span>
         <section className="pb-10 pt-12">
           <span className="micro">Security Lab · live onchain</span>
           <h1 className="mt-3 max-w-[720px] text-5xl font-bold leading-[1.02] tracking-[-0.04em] text-balance sm:text-6xl">
@@ -60,7 +62,7 @@ export default function SecurityLab() {
               Raphie
             </a>
           </span>
-          <span className="micro text-right">BSC testnet · no mainnet claim · nothing asks you to sign until you hire</span>
+          <span className="micro text-right">BNB Smart Chain · nothing asks you to sign until you hire</span>
         </div>
       </footer>
     </div>
