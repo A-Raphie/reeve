@@ -90,6 +90,7 @@ export const AGENTS: Record<AgentId, Agent> = {
       "Wallet live on BNB Smart Chain and funded",
       "Session authority proven end to end: grant, agent-side execute, revoke (tx receipts)",
       "Round engine live: checks run on a 15-minute schedule, receipts committed to the repo",
+      "Strategy engine live: real Venus supply-APR sweep across three pools every round, with mainnet price reads",
     ],
     notEstablished: [
       "No supply position under management yet · the first route executes when a writ is signed",
